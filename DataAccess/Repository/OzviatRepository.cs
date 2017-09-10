@@ -42,6 +42,14 @@ namespace DataAccess.Repository
             result = pl.ToList();
             return OnlineTools.ToDataTable(result);
         }
+        public int OzviatIDByLGIDAndStudentCode(int LGID, string SCode)
+        {
+            int result = 0;
+
+            result = db.Ozviats.Where(p => (p.LGID == LGID) && (p.StudentCode == SCode)).Single().OzviatID;
+
+            return result;
+        }
 
         public List<string> FindStudentCodeByLGID(int lgid)
         {

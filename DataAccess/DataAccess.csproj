@@ -101,10 +101,12 @@
     <Compile Include="Repository\vJTamrinRepository.cs" />
     <Compile Include="Repository\vLessonGroupRepository.cs" />
     <Compile Include="Repository\vNomratRepository.cs" />
+
     <Compile Include="Repository\vPresenceRepository.cs" />
     <Compile Include="Repository\vPaymentHistoryRepository.cs" />
     <Compile Include="Repository\vReportExamsRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
+
     <Compile Include="Repository\vStudentRepository.cs" />
     <Compile Include="Repository\TamrinRepository.cs" />
     <Compile Include="Repository\vTamrinRepository.cs" />
