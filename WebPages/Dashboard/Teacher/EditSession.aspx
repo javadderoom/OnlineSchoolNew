@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Admin/AdminPanel.Master" AutoEventWireup="true" CodeBehind="NewSesion.aspx.cs" Inherits="WebPages.Dashboard.Admin.NewSesion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Teacher/TeacherPanel.Master" AutoEventWireup="true" CodeBehind="EditSession.aspx.cs" Inherits="WebPages.Dashboard.Teacher.EditSession" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -16,7 +16,7 @@
     <div class="c-title">
         <h4>
 
-            <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,NewSession%>" />
+            <asp:Literal runat="server" Text="<%$ Resources:Dashboard,EditSession%>" />
         </h4>
     </div>
     <div class="c-content">
@@ -75,10 +75,6 @@
                     </div>
                 </div>
 
-
-
-
-
                 <div class="ln_solid">
                 </div>
                 <div class="pull-left">
@@ -102,39 +98,32 @@
                                                 <div class="pull-right">
                                                     <asp:TextBox ID="Score" runat="server"></asp:TextBox>
                                                 </div>
-
                                             </ItemTemplate>
                                             <HeaderTemplate>
-                                                <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,NewScore%>" />
+                                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Score%>" />
                                             </HeaderTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
                                                 <div class="pull-right">
                                                     <span>
-                                                        <asp:CheckBox ID="RowChB" runat="server" /></span>
-
+                                                        <asp:CheckBox ID="RowChBPeresece" runat="server" /></span>
                                                 </div>
-
                                             </ItemTemplate>
                                             <HeaderTemplate>
                                                 <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,Present%>" />
                                                 <asp:CheckBox ID="HeadChB" runat="server" OnCheckedChanged="HeadChB_CheckedChanged" AutoPostBack="true" />
-
                                             </HeaderTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
                                                 <div class="pull-right">
                                                     <span>
-                                                        <asp:CheckBox ID="RowChB2" runat="server" /></span>
-
+                                                        <asp:CheckBox ID="RowChBisMovajjah" runat="server" /></span>
                                                 </div>
-
                                             </ItemTemplate>
                                             <HeaderTemplate>
                                                 <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,movajah%>" />
-
                                             </HeaderTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
@@ -143,11 +132,9 @@
 
                                                     <asp:TextBox ID="DescriptionTbx" runat="server" TextMode="MultiLine" CssClass="DescriptionTbx"></asp:TextBox>
                                                 </div>
-
                                             </ItemTemplate>
                                             <HeaderTemplate>
                                                 <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,Description%>" />
-
                                             </HeaderTemplate>
                                         </asp:TemplateField>
                                     </Columns>

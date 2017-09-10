@@ -74,8 +74,10 @@ namespace WebPages.Dashboard.Admin
                 // Retrieve the row that contains the button
                 // from the Rows collection.
                 GridViewRow row = gvStudents.Rows[index];
+                Session.Add("UserIDForEditStudent", row.Cells[0].Text);
+                Session.Timeout = 60;
 
-                Response.Redirect("http://localhost:4911/Dashboard/Admin/EditStudent.aspx?userid=" + row.Cells[0].Text);
+                Response.Redirect("http://localhost:4911/Dashboard/Admin/EditStudent.aspx");
             }
             if (e.CommandName == "Details")
             {
@@ -87,7 +89,6 @@ namespace WebPages.Dashboard.Admin
                 // from the Rows collection.
                 GridViewRow row = gvStudents.Rows[index];
 
-                //Response.Redirect("http://localhost:4911/Dashboard/Admin/Details.aspx?userid=" + row.Cells[0].Text);
                 string id = row.Cells[0].Text;
 
                 if (id != "" || id != null)

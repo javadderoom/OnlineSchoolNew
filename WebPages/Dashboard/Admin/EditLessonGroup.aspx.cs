@@ -122,10 +122,11 @@ namespace WebPages.Dashboard.Admin
 
         public void loadLessonGroup()
         {
-            string id = Request.QueryString["LGID"];
+            ;
 
-            if (id != "" || id != null)
+            if (Session["LGIDForEditLessonGroup"] != null)
             {
+                string id = Session["LGIDForEditLessonGroup"].ToString();
                 LessonGroup lo = rep.FindFromLgByLGID(id.ToInt());
 
                 ddGrade.Items.FindByValue(lo.GradeID.ToString()).Selected = true;
@@ -143,6 +144,11 @@ namespace WebPages.Dashboard.Admin
                 // Year.Items.FindByValue(lo.GradeID.ToString()).Selected = true;
                 tbxYear.Text = lo.Year;
             }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('شما با آدرس اشتباه وارد شده اید ! ');window.location ='http://localhost:4911/Dashboard/Admin/News.aspx'", true);
+
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -156,10 +162,11 @@ namespace WebPages.Dashboard.Admin
 
         protected void btnEditLessonGroup_ServerClick(object sender, EventArgs e)
         {
-            string id = Request.QueryString["LGID"];
 
-            if (id != "" || id != null)
+
+            if (Session["LGIDForEditLessonGroup"] != null)
             {
+                string id = Session["LGIDForEditLessonGroup"].ToString();
                 LessonGroup vlg = rep.FindFromLgByLGID(id.ToInt());
                 LessonGroup lg = new LessonGroup();
 
@@ -183,27 +190,27 @@ namespace WebPages.Dashboard.Admin
                     newLesson.LessonID = LessonDrpDList.SelectedItem.Value.ToInt();
                     newLesson.TeacherCode = Teacher.SelectedItem.Value;
                     newLesson.Year = tbxYear.Text;
-                    //SchoolDBEntities db = new SchoolDBEntities();
                     vLessonGroupRepository vv = new vLessonGroupRepository();
 
-                    //db.LessonGroups.Attach(newLesson);
                     if (vv.SaveLessonGroups(newLesson))
                     {
-                        //Response.Write("<script>alert('ثبت با موفقیت انجام شد');</script>");
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ویرایش با موفقیت انجام شد! ');window.location ='http://localhost:4911/Dashboard/Admin/LessonGroups.aspx'", true);
-                        //Response.Redirect("http://localhost:4911/Dashboard/Admin/LessonGroups.aspx");
                     }
                     else
                     {
-                        // Response.Write("<script>alert('ثبت با خطا مواجه شد');</script>");
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ویرایش با خطا مواجه شد! ')", true);
                     }
                 }
                 else
                 {
-                    // Response.Write("<script>alert('لطفا مقدار همه فیلد ها را معین کنید');</script>");
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('لطفا تمام فیلد ها را انتخاب کنید! ')", true);
                 }
+            }
+            else
+
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('شما با آدرس اشتباه وارد شده اید ! ');window.location ='http://localhost:4911/Dashboard/Admin/News.aspx'", true);
+
             }
         }
     }

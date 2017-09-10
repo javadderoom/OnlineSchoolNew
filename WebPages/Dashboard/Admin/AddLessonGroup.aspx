@@ -15,7 +15,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="c-title">
         <h4>
-            <asp:Literal runat="server" Text="<%$ Resources:Dashboard,NewLesson%>" /></h4>
+            <asp:literal runat="server" text="<%$ Resources:Dashboard,NewLesson%>" />
+        </h4>
     </div>
     <div class="x_content">
         <div id="demo-form2" class="form-horizontal form-label-right">
@@ -25,13 +26,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_Grade" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,GradeTitle%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,GradeTitle%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="Grade" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="Grade" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -39,13 +40,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_Field" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Field%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,Field%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="Field" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="Field" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -53,13 +54,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_Class" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Class%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,Class%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="Class" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="Class" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -67,13 +68,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_Day" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Day%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,Day%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="Day" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="Day" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -81,13 +82,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_Time" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Time%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,Time%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="Time" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="Time" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -95,13 +96,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_LessonTitle" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,LessonTitle%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,LessonTitle%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="LessonDrpDList" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="LessonDrpDList" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -109,13 +110,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_TeacherFName" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,TeacherFName%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,TeacherFName%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="Teacher" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="Teacher" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -123,13 +124,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_Year" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Year%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,Year%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:DropDownList ID="Year" CssClass="select2_group form-control"
-                                runat="server" Height="40px">
-                            </asp:DropDownList>
+                            <asp:dropdownlist id="Year" cssclass="select2_group form-control"
+                                runat="server" height="40px">
+                            </asp:dropdownlist>
                         </div>
                     </div>
                 </div>
@@ -137,11 +138,11 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-sm-push-8 text-right">
                             <span id="ContentPlaceHolder1_lbl_tbxYear" class="control-label formLabel" style="font-size: 100%; font-weight: bold;">
-                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Year%>" />
+                                <asp:literal runat="server" text="<%$ Resources:Dashboard,Year%>" />
                             </span>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
-                            <asp:TextBox ID="tbxYear" runat="server" class="form-control text-right dirRight"></asp:TextBox>
+                            <asp:textbox id="tbxYear" runat="server" class="form-control text-right dirRight"></asp:textbox>
                         </div>
                     </div>
                 </div>
@@ -151,7 +152,7 @@
                     <div class="col-xs-4 text-left">
                         <a href="http://localhost:4911/Dashboard/Admin/LessonGroups.aspx" class="btn btn-default">
                             <span class="fa fa-chevron-left"></span>
-                            <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Back%>" />
+                            <asp:literal runat="server" text="<%$ Resources:Dashboard,Back%>" />
                         </a>
                     </div>
                     <div class="col-xs-8 text-right">

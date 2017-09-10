@@ -16,10 +16,11 @@ namespace WebPages.Dashboard.Admin
 
         public void load()
         {
-            string id = Request.QueryString["userid"];
 
-            if (id != "" || id != null)
+
+            if (Session["useridForEditEmployee"] != null)
             {
+                string id = Session["useridForEditEmployee"].ToString();
                 Karmand lo = rep.FindByEmployeeID(id);
                 tbxFirstName.Value = lo.FirstName;
                 tbxLastName.Value = lo.LastName;
@@ -31,6 +32,11 @@ namespace WebPages.Dashboard.Admin
                 tbxMobile.Value = lo.Mobile;
 
                 //tbxEmail.Value = lo.Email;
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('شما با آدرس اشتباه وارد شده اید ! ');window.location ='http://localhost:4911/Dashboard/Admin/News.aspx'", true);
+
             }
         }
 
@@ -44,10 +50,11 @@ namespace WebPages.Dashboard.Admin
 
         protected void btnSabtEditProfile_Click(object sender, EventArgs e)
         {
-            string id = Request.QueryString["userid"];
 
-            if (id != "" || id != null)
+
+            if (Session["useridForEditEmployee"] != null)
             {
+                string id = Session["useridForEditEmployee"].ToString();
                 Karmand stuu = rep.FindByEmployeeID(id);
                 Karmand kar = new Karmand();
 
@@ -67,6 +74,11 @@ namespace WebPages.Dashboard.Admin
 
                 rep.SaveEmployees(kar);
                 Response.Redirect("http://localhost:4911/Dashboard/Admin/Employees.aspx");
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('شما با آدرس اشتباه وارد شده اید ! ');window.location ='http://localhost:4911/Dashboard/Admin/News.aspx'", true);
+
             }
         }
     }

@@ -69,8 +69,9 @@ namespace WebPages.Dashboard.Admin
                 // Retrieve the row that contains the button
                 // from the Rows collection.
                 GridViewRow row = gvLessons.Rows[index];
-
-                Response.Redirect("http://localhost:4911/Dashboard/Admin/EditeLesson.aspx?LessonID=" + row.Cells[0].Text);
+                /////////////////////////////////////////////////////////////////
+                ///////////// ADD A MODAL HERE FOR EDITING LESSON ///////////////
+                ////////////////////////////////////////////////////////////////
             }
             if (e.CommandName == "Details")
             {
@@ -82,10 +83,9 @@ namespace WebPages.Dashboard.Admin
                 // from the Rows collection.
                 GridViewRow row = gvLessons.Rows[index];
 
-                //Response.Redirect("http://localhost:4911/Dashboard/Admin/Details.aspx?userid=" + row.Cells[0].Text);
                 string id = row.Cells[0].Text;
 
-                if (id != "" || id != null)
+                if (!(string.IsNullOrEmpty(id)))
                 {
                     Lesson lo = rep.FindByLessonID(id.ToInt());
                     tbxLessonID.InnerText = lo.LessonID.ToString();

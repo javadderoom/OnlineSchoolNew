@@ -2,9 +2,9 @@
 using DataAccess;
 using DataAccess.Repository;
 
-namespace WebPages.Dashboard.Admin
+namespace WebPages.Dashboard.Teacher
 {
-    public partial class Kartabl : System.Web.UI.Page
+    public partial class TeacherKartabl : System.Web.UI.Page
     {
         private KarmandRepository kr = new KarmandRepository();
 

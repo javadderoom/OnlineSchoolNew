@@ -127,8 +127,8 @@ namespace WebPages.Dashboard.Admin
                 // Retrieve the row that contains the button
                 // from the Rows collection.
                 GridViewRow row = gvLessonGroups.Rows[index];
-
-                Response.Redirect("http://localhost:4911/Dashboard/Admin/ClassMembers.aspx?LGID=" + row.Cells[0].Text);
+                Session.Add("LGIDForClassMembers", row.Cells[0].Text);
+                Response.Redirect("http://localhost:4911/Dashboard/Admin/ClassMembers.aspx");
             }
             if (e.CommandName == "Edit")
             {
@@ -139,8 +139,8 @@ namespace WebPages.Dashboard.Admin
                 // Retrieve the row that contains the button
                 // from the Rows collection.
                 GridViewRow row = gvLessonGroups.Rows[index];
-
-                Response.Redirect("http://localhost:4911/Dashboard/Admin/EditLessonGroup.aspx?LGID=" + row.Cells[0].Text);
+                Session.Add("LGIDForEditLessonGroup", row.Cells[0].Text);
+                Response.Redirect("http://localhost:4911/Dashboard/Admin/EditLessonGroup.aspx");
             }
             if (e.CommandName == "Details")
             {
@@ -195,7 +195,7 @@ namespace WebPages.Dashboard.Admin
                 //k = db.LessonGroups.Where(p => p.LGID == a).Single();
                 //db.Karmands.Remove(k);
                 //db.SaveChanges();
-                //LoadLessonGroups();
+                LoadLessonGroups();
             }
         }
 

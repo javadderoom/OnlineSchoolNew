@@ -21,7 +21,7 @@
     <div class="x_content">
         <div class="row">
             <div class="col-md-4 hidden-xs">
-                <%--awdawdwa--%>
+
                 <label style="padding-top: 5px;">
                     نمایش
                                 <select name="ctl00$ContentPlaceHolder1$ddlPageSize" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ddlPageSize\',\'\')', 0)" id="ContentPlaceHolder1_ddlPageSize" style="font-weight: normal;">

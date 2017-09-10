@@ -1,0 +1,152 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TeacherPanel.Master.cs" Inherits="WebPages.Dashboard.Teacher.TeacherMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container-fluid">
+
+            <nav class="navbar navbar-default navbar-fixed-top no-margin " style="background-color: #EDEDED;">
+                <!-- bs-example-navbar-collapse-1 -->
+
+                <div class="navbar-header fixed-brand" style="margin-right: 20px;">
+                    <a class="navbar-brand" href="http://localhost:4911/Dashboard/Admin/AddNews.aspx" id="brandIcon">
+                        <i class="fa fa-rocket fa-4"></i>SEEGATESITE</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                        <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Brand and toggle get grouped for better mobile display -->
+
+                <!-- navbar-header-->
+            </nav>
+
+            <div id="wrapper" class="toggled-2">
+                <!-- Sidebar -->
+
+                <div id="sidebar-wrapper">
+                    <div class=" sid-profile">
+                        <div class="profile-pic" style="float: right">
+
+                            <img src="../Images/3408.jpg" alt="..." class="img-responsive img-circle img-profile" />
+                        </div>
+                        <div class="profile-info" style="text-align: right">
+                            <span>خوش آمدید </span>
+                            <h4>
+                                <span id="lblUsername">جواد شیخ اعظمی</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <%--  -----------------------sidebar---------------------------------------------------%>
+                    <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                        <li>
+
+                            <a href="#" class="a-properties">
+                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,news%>" /><span class="fa-stack fa-lg pull-left">
+
+                                    <i class="fa fa-bell fa-stack-1x " style="float: left;"></i></span>
+                            </a>
+                            <ul class="nav-pills nav-stacked" style="list-style-type: none; display: block;">
+                                <li>
+
+                                    <a href="http://localhost:4911/Dashboard/Admin/TeacherAddNews.aspx" class="a-properties sub-menu">
+                                        <span class="glyphicon glyphicon-record icon-style" aria-hidden="true"></span>
+                                        <asp:Literal runat="server" Text="<%$ Resources:Dashboard,AddNews%>" />
+                                        <span class="fa-stack fa-lg pull-left"></span>
+                                    </a>
+                                </li>
+                                <li>
+
+                                    <a href="http://localhost:4911/Dashboard/Teacher/TeacherNews.aspx" class="a-properties sub-menu">
+                                        <span class="glyphicon glyphicon-record icon-style" aria-hidden="true"></span>
+                                        <asp:Literal runat="server" Text="<%$ Resources:Dashboard,news%>" />
+                                        <span class="fa-stack fa-lg pull-left"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="a-properties">
+                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,kartabl%>" /><span class="fa-stack fa-lg pull-left">
+
+                                    <i class="fa fa-user fa-stack-1x " style="float: left;"></i></span>
+                            </a>
+                            <ul class="nav-pills nav-stacked" style="list-style-type: none;">
+                                <li><a href="http://localhost:4911/Dashboard/Teacher/TeacherKartabl.aspx" class="a-properties sub-menu">
+                                    <span class="glyphicon glyphicon-record icon-style" aria-hidden="true"></span>
+                                    <asp:Literal runat="server" Text="<%$ Resources:Dashboard,kartabl%>" />
+                                    <span class="fa-stack fa-lg pull-left"></span>
+                                </a>
+                                </li>
+                                <li><a href="http://localhost:4911/Dashboard/Teacher/TeacherPicture.aspx" class="a-properties sub-menu">
+                                    <span class="glyphicon glyphicon-record icon-style" aria-hidden="true"></span>
+                                    <asp:Literal runat="server" Text="<%$ Resources:Dashboard,change_picture%>" />
+
+                                    <span class="fa-stack fa-lg pull-left"></span>
+                                </a></li>
+                                <li><a href="http://localhost:4911/Dashboard/Teacher/TeacherPassword.aspx" class="a-properties sub-menu">
+                                    <span class="glyphicon glyphicon-record icon-style" aria-hidden="true"></span>
+                                    <asp:Literal runat="server" Text="<%$ Resources:Dashboard,change_password%>" />
+
+                                    <span class="fa-stack fa-lg pull-left"></span>
+                                </a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="#" class="a-properties ">
+                                <asp:Literal runat="server" Text=" <%$ Resources:Dashboard,ClassManagment%>" /><span class="fa-stack fa-lg pull-left">
+
+                                    <i class="glyphicon glyphicon-education fa-stack-1x " style="float: left;"></i></span>
+                            </a>
+                            <ul class="nav-pills nav-stacked" style="list-style-type: none;">
+                                <li><a href="http://localhost:4911/Dashboard/Teacher/ClassManagment.aspx" class="a-properties sub-menu">
+                                    <span class="glyphicon glyphicon-record icon-style" aria-hidden="true"></span>
+                                    <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,ClassList%>" />
+                                    <span class="fa-stack fa-lg pull-left"></span>
+                                </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- /#sidebar-wrapper -->
+                <!-- Page Content -->
+                <div style="margin-right: 10px">
+                    <div id="page-content-wrapper" class="ContentPlaceHolderStyle">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /#page-content-wrapper -->
+        </div>
+
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <%--<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script>tinymce.init({ selector: 'textarea' });</script>--%>
+        <script src="../JavaScript/jquery.min.js"></script>
+        <script src="../JavaScript/bootstrap.min.js"></script>
+        <script src="../JavaScript/custom.min.js"></script>
+        <script src="../../Scripts/validator.js"></script>
+        <script src="../JavaScript/sidebar_menu.js"></script>
+        <%--<script src="../JavaScript/tinymce.min.js"></script>--%>
+        <script src="../JavaScript/JavaScript.js"></script>
+    </form>
+</body>
+</html>

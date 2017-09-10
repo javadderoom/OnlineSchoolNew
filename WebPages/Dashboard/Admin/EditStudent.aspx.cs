@@ -16,10 +16,10 @@ namespace WebPages.Dashboard.Admin
 
         public void load()
         {
-            string id = Request.QueryString["userid"];
 
-            if (id != "" || id != null)
+            if (Session["UserIDForEditStudent"] != null)
             {
+                string id = Session["UserIDForEditStudent"].ToString();
                 Student lo = rep.FindByStudentCode(id);
                 tbxFirstName.Value = lo.FirstName;
                 tbxLastName.Value = lo.LastName;
@@ -30,6 +30,10 @@ namespace WebPages.Dashboard.Admin
                 tbxMobile.Value = lo.MobileNumber;
                 tbxZipCode.Value = lo.ZipCode;
                 tbxEmail.Value = lo.Email;
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('شما با آدرس اشتباه وارد شده اید ! ');window.location ='http://localhost:4911/Dashboard/Admin/News.aspx'", true);
             }
         }
 
@@ -43,10 +47,11 @@ namespace WebPages.Dashboard.Admin
 
         protected void btnSabtEditProfile_Click(object sender, EventArgs e)
         {
-            string id = Request.QueryString["userid"];
 
-            if (id != "" || id != null)
+
+            if (Session["UserIDForEditStudent"] != null)
             {
+                string id = Session["UserIDForEditStudent"].ToString();
                 Student stuu = rep.FindByStudentCode(id);
                 Student stu = new Student();
 

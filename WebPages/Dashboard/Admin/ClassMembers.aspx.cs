@@ -27,22 +27,29 @@ namespace WebPages.Dashboard.Admin
 
         public void LoadStudents()
         {
-            string id = Request.QueryString["LGID"];
-            List<string> stuCodes = new List<string>();
-            foreach (GridViewRow row in gvSelectedStudents.Rows)
+            if (Session["LGIDForClassMembers"] != null)
             {
-                stuCodes.Add(row.Cells[1].Text);
-
+                string id = Session["LGIDForClassMembers"].ToString();
+                List<string> stuCodes = new List<string>();
+                foreach (GridViewRow row in gvSelectedStudents.Rows)
+                {
+                    stuCodes.Add(row.Cells[1].Text);
+                }
+                gvStudents.DataSource = rep.GetAllStudentsExceptByGradeID(stuCodes, lg.getLessonGroupgardeID(id.ToInt()));
+                gvStudents.DataBind();
             }
-            gvStudents.DataSource = rep.GetAllStudentsExceptByGradeID(stuCodes, lg.getLessonGroupgardeID(id.ToInt()));
-            gvStudents.DataBind();
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('شما با آدرس اشتباه وارد شده اید ! ');window.location ='http://localhost:4911/Dashboard/Admin/News.aspx'", true);
+            }
+
         }
 
         #region SelectedStudents
 
         public void LoadSelectedStudents()
         {
-            string id = Request.QueryString["LGID"];
+            string id = Session["LGIDForClassMembers"].ToString();
             List<vOzviat> vs = new List<vOzviat>();
             List<string> St = or.FindStudentCodeByLGID(id.ToInt());
             for (int i = 0; i < St.Count; i++)
@@ -82,7 +89,6 @@ namespace WebPages.Dashboard.Admin
                 // from the Rows collection.
                 GridViewRow row = gvSelectedStudents.Rows[index];
 
-                //Response.Redirect("http://localhost:4911/Dashboard/Admin/Details.aspx?LGID=" + row.Cells[0].Text);
                 string id = row.Cells[1].Text;
 
                 if (id != "" || id != null)
@@ -153,7 +159,6 @@ namespace WebPages.Dashboard.Admin
                 // from the Rows collection.
                 GridViewRow row = gvStudents.Rows[index];
 
-                //Response.Redirect("http://localhost:4911/Dashboard/Admin/Details.aspx?LGID=" + row.Cells[0].Text);
                 string id = row.Cells[0].Text;
 
                 if (id != "" || id != null)
@@ -179,7 +184,6 @@ namespace WebPages.Dashboard.Admin
                     "ModalScript", sb.ToString(), false);
                 }
             }
-
         }
 
         #endregion AllStudents
@@ -188,7 +192,6 @@ namespace WebPages.Dashboard.Admin
         {
             //int i = lblSelectedRecords.Text.IndexOf(':');
             //int num = lblSelectedRecords.Text.Substring(i + 1).ToInt();
-
 
             CheckBox ch = sender as CheckBox;
             // if (ch.Checked == true) num++;
@@ -211,7 +214,7 @@ namespace WebPages.Dashboard.Admin
                 }
             }
 
-            string id = Request.QueryString["LGID"];
+            string id = Session["LGIDForClassMembers"].ToString();
 
             DataAccess.Ozviat oo;
             foreach (string s in loid)
@@ -222,12 +225,10 @@ namespace WebPages.Dashboard.Admin
                 or.SaveOzviat(oo);
             }
 
-
-
             LoadSelectedStudents();
             LoadStudents();
-
         }
+
         public string tabdiladadbehoruf(int adad)
         {
             string horuf = "";
@@ -280,23 +281,19 @@ namespace WebPages.Dashboard.Admin
                 case 12:
                     horuf = "دوازدهم";
                     break;
-
-
             }
             return horuf;
         }
+
         protected void func_search(object sender, EventArgs e)
         {
             List<string> stuCodes = new List<string>();
             foreach (GridViewRow row in gvSelectedStudents.Rows)
             {
                 stuCodes.Add(row.Cells[1].Text);
-
             }
             gvStudents.DataSource = rep.searchStudents(tbxSearch.Text, stuCodes);
             gvStudents.DataBind();
         }
     }
-
-
 }

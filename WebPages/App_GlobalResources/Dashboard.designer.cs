@@ -286,6 +286,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ویرایش جلسه.
+        /// </summary>
+        internal static string EditSession {
+            get {
+                return ResourceManager.GetString("EditSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ویرایش.
         /// </summary>
         internal static string Edit_student {
@@ -696,6 +705,15 @@ namespace Resources {
         internal static string salary_payment {
             get {
                 return ResourceManager.GetString("salary_payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نمره.
+        /// </summary>
+        internal static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
             }
         }
         

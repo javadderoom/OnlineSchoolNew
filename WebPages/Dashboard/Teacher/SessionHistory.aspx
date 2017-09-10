@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Admin/AdminPanel.Master" AutoEventWireup="true" CodeBehind="SesionHistory.aspx.cs" Inherits="WebPages.Dashboard.Admin.SesionHistory" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Teacher/TeacherPanel.Master" AutoEventWireup="true" CodeBehind="SessionHistory.aspx.cs" Inherits="WebPages.Dashboard.Teacher.SesionHistory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -27,8 +27,11 @@
                     <div>
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
-                                <asp:GridView ID="gvSessionHistory" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False"
-                                    CssClass="dirRight table table-responsive" HorizontalAlign="Center" AllowPaging="True" EnableSortingAndPagingCallbacks="True" PageSize="5" OnRowCommand="gvSessionHistory_RowCommand">
+                                <asp:GridView ID="gvSessionHistory" runat="server" BackColor="White" BorderColor="#CCCCCC"
+                                    BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal"
+                                    AutoGenerateColumns="False"
+                                    CssClass="dirRight table table-responsive" HorizontalAlign="Center" AllowPaging="True"
+                                    EnableSortingAndPagingCallbacks="True" PageSize="5" OnRowCommand="gvSessionHistory_RowCommand">
                                     <Columns>
                                         <asp:BoundField DataField="SessionID" HeaderText="<%$ Resources:Dashboard,ID%>" />
                                         <asp:BoundField DataField="Date" HeaderText="<%$ Resources:Dashboard,Date%>" />

@@ -19,6 +19,7 @@ namespace DataAccess.Repository
         {
             conn = new Connection();
         }
+
         public int OzviatIDByLGIDAndStudentCode(int id, string stuCode)
         {
             int result = 0;
@@ -27,6 +28,7 @@ namespace DataAccess.Repository
 
             return result;
         }
+
         public DataTable FindByLGID(int lgid)
         {
             List<vOzviat> result = new List<vOzviat>();
@@ -42,14 +44,15 @@ namespace DataAccess.Repository
             result = pl.ToList();
             return OnlineTools.ToDataTable(result);
         }
-        public int OzviatIDByLGIDAndStudentCode(int LGID, string SCode)
-        {
-            int result = 0;
 
-            result = db.Ozviats.Where(p => (p.LGID == LGID) && (p.StudentCode == SCode)).Single().OzviatID;
+        //public int OzviatIDByLGIDAndStudentCode(int LGID, string SCode)
+        //{
+        //    int result = 0;
 
-            return result;
-        }
+        //    result = db.Ozviats.Where(p => (p.LGID == LGID) && (p.StudentCode == SCode)).Single().OzviatID;
+
+        //    return result;
+        //}
 
         public List<string> FindStudentCodeByLGID(int lgid)
         {
@@ -123,6 +126,7 @@ namespace DataAccess.Repository
                 }
             }
         }
+
         public string StudentCountByLGID(int LGID)
         {
             int result = 0;

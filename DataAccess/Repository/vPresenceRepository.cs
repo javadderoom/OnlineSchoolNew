@@ -10,13 +10,61 @@ namespace DataAccess.Repository
 {
     public class vPresenceRepository
     {
-
         private Connection conn;
 
         public vPresenceRepository()
         {
             conn = new Connection();
         }
+
+        public bool? GetPreseceBySessionIDandOzviatID(int id, int oid)
+        {
+            bool? result = true;
+            SchoolDBEntities sd = conn.GetContext();
+            result = (from r in sd.Presences
+                      where r.SessionID == id && r.OzviatID == oid
+
+                      select r.Status).FirstOrDefault();
+
+            return result;
+        }
+
+        public int GetPreseceIDBySessionIDandOzviatID(int id, int oid)
+        {
+            int result = 0;
+            SchoolDBEntities sd = conn.GetContext();
+            result = (from r in sd.Presences
+                      where r.SessionID == id && r.OzviatID == oid
+
+                      select r.ID).FirstOrDefault();
+
+            return result;
+        }
+
+        public bool? GetisMovajjahBySessionIDandOzviatID(int id, int oid)
+        {
+            bool? result = true;
+            SchoolDBEntities sd = conn.GetContext();
+            result = (from r in sd.Presences
+                      where r.SessionID == id && r.OzviatID == oid
+
+                      select r.isMovajjah).FirstOrDefault();
+
+            return result;
+        }
+
+        public string GetDescriptionBySessionIDandOzviatID(int id, int oid)
+        {
+            string result = "";
+            SchoolDBEntities sd = conn.GetContext();
+            result = (from r in sd.Presences
+                      where r.SessionID == id && r.OzviatID == oid
+
+                      select r.Description).FirstOrDefault();
+
+            return result;
+        }
+
         public void SavePresenc(Presence presence)
         {
             using (SchoolDBEntities pb = conn.GetContext())

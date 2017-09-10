@@ -16,6 +16,31 @@ namespace DataAccess.Repository
         {
             conn = new Connection();
         }
+
+        public string GetNomreBySessionIDandOzviatID(int id, int oid)
+        {
+            string result = "";
+            SchoolDBEntities sd = conn.GetContext();
+            result = (from r in sd.Nomarats
+                      where r.SessionID == id && r.OzviatID == oid
+
+                      select r.Nomre).FirstOrDefault();
+
+            return result;
+        }
+
+        public int GetNomreIDBySessionIDandOzviatID(int id, int oid)
+        {
+            int result = 0;
+            SchoolDBEntities sd = conn.GetContext();
+            result = (from r in sd.Nomarats
+                      where r.SessionID == id && r.OzviatID == oid
+
+                      select r.NomreID).FirstOrDefault();
+
+            return result;
+        }
+
         public void SaveNomre(Nomarat nomre)
         {
             using (SchoolDBEntities pb = conn.GetContext())

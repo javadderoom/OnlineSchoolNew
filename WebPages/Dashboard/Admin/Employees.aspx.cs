@@ -65,8 +65,9 @@ namespace WebPages.Dashboard.Admin
                 // Retrieve the row that contains the button
                 // from the Rows collection.
                 GridViewRow row = gvEmployees.Rows[index];
-
-                Response.Redirect("http://localhost:4911/Dashboard/Admin/EditEmployee.aspx?userid=" + row.Cells[0].Text);
+                Session.Add("useridForEditEmployee", row.Cells[0].Text);
+                Session.Timeout = 60;
+                Response.Redirect("http://localhost:4911/Dashboard/Admin/EditEmployee.aspx");
             }
             if (e.CommandName == "Details")
             {
@@ -78,7 +79,6 @@ namespace WebPages.Dashboard.Admin
                 // from the Rows collection.
                 GridViewRow row = gvEmployees.Rows[index];
 
-                // Response.Redirect("http://localhost:4911/Dashboard/Admin/EmployeeDetails.aspx?userid=" + row.Cells[0].Text);
                 string id = row.Cells[0].Text;
                 KarmandRepository rep = new KarmandRepository();
                 if (id != "" || id != null)

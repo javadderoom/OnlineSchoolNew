@@ -2,9 +2,9 @@
 using System.Linq;
 using DataAccess;
 
-namespace WebPages.Dashboard.Admin
+namespace WebPages.Dashboard.Teacher
 {
-    public partial class EmployeePassword : System.Web.UI.Page
+    public partial class TeacherPass : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -21,7 +21,6 @@
     <div class="x_content">
         <div class="row">
             <div class="col-md-4 hidden-xs">
-                <%--awdawdwa--%>
                 <label style="padding-top: 5px;">
                     نمایش
                                

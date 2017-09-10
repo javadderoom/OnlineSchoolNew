@@ -390,7 +390,10 @@
   <data name="Date" xml:space="preserve">
     <value>تاریخ</value>
   </data>
-  <data name="SessionDetails" xml:space="preserve">
-    <value>جزییات جلسه</value>
+  <data name="EditSession" xml:space="preserve">
+    <value>ویرایش جلسه</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>نمره</value>
   </data>
 </root>

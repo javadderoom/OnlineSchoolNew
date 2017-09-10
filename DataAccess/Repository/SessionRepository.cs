@@ -29,7 +29,7 @@ namespace DataAccess.Repository
             return (result + 1).ToString();
         }
 
-        public DataTable GetSessionsByLGID(int lgid)
+        public DataTable GetSessionByLGID(int lgid)
         {
             List<Sessoin> result = new List<Sessoin>();
 
@@ -43,6 +43,30 @@ namespace DataAccess.Repository
 
             result = pl.ToList();
             return OnlineTools.ToDataTable(result);
+        }
+
+        public int countSessionsByLGID(int id)
+        {
+            SchoolDBEntities pb = conn.GetContext();
+            int query =
+                (from r in pb.Sessoins
+                 where r.LGID == id
+                 select r).Count();
+
+            return query;
+        }
+
+        public Sessoin GetSessionsBySessionID(int id)
+        {
+            SchoolDBEntities sd = conn.GetContext();
+
+            Sessoin pl =
+                (from r in sd.Sessoins
+                 where r.SessionID == id
+                 orderby r.SessionID
+                 select r).FirstOrDefault();
+
+            return pl;
         }
 
         public Boolean SaveSession(Sessoin Session)
@@ -122,17 +146,6 @@ namespace DataAccess.Repository
                       select r.SessionID).FirstOrDefault();
 
             return result;
-        }
-
-        public int countSessionsByLGID(int id)
-        {
-            SchoolDBEntities pb = conn.GetContext();
-            int query =
-                (from r in pb.Sessoins
-                 where r.LGID == id
-                 select r).Count();
-
-            return query;
         }
     }
 }

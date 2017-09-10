@@ -23,6 +23,7 @@ namespace DataAccess
         public int SessionID { get; set; }
         public string Date { get; set; }
         public Nullable<int> LGID { get; set; }
+        public Nullable<int> SessionNum { get; set; }
     
         public virtual LessonGroup LessonGroup { get; set; }
         public virtual ICollection<Nomarat> Nomarats { get; set; }

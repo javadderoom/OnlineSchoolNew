@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Admin/AdminPanel.Master" AutoEventWireup="true" CodeBehind="ClassStudents.aspx.cs" Inherits="WebPages.Dashboard.Admin.ClassStudents" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Teacher/TeacherPanel.Master" AutoEventWireup="true" CodeBehind="ClassStudents.aspx.cs" Inherits="WebPages.Dashboard.Teacher.ClassStudents" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -33,8 +33,6 @@
                             <asp:BoundField DataField="StudentCode" HeaderText="<%$ Resources:Dashboard,StudentCode%>" />
                             <asp:BoundField DataField="FirstName" HeaderText="<%$ Resources:Dashboard,name%>" />
                             <asp:BoundField DataField="LastName" HeaderText="<%$ Resources:Dashboard,family%>" />
-
-
                         </Columns>
 
                         <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
@@ -52,5 +50,4 @@
     </div>
     <div class="extra" style="height: 100px">
     </div>
-
 </asp:Content>

@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebPages.Dashboard.Admin {
+namespace WebPages.Dashboard.Teacher {
     
     
-    public partial class ClassStudents {
+    public partial class TeacherPass {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// tbxCurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword tbxCurrentPassword;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// tbxNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword tbxNewPassword;
         
         /// <summary>
-        /// gvClassStudents control.
+        /// tbxConfirmNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvClassStudents;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword tbxConfirmNewPassword;
+        
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit btnSubmit;
     }
 }

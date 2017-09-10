@@ -3,9 +3,9 @@ using System.Linq;
 using DataAccess;
 using DataAccess.Repository;
 
-namespace WebPages.Dashboard.Admin
+namespace WebPages.Dashboard.Teacher
 {
-    public partial class Picture : System.Web.UI.Page
+    public partial class TeacherPicture : System.Web.UI.Page
     {
         private void UpLoadAndDisplay()
         {

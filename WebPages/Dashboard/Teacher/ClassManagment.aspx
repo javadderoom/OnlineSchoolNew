@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Admin/AdminPanel.Master" AutoEventWireup="true" CodeBehind="ClassManagment.aspx.cs" Inherits="WebPages.Dashboard.Admin.ClassManagment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Teacher/TeacherPanel.Master" AutoEventWireup="true" CodeBehind="ClassManagment.aspx.cs" Inherits="WebPages.Dashboard.Teacher.ClassManagment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -42,17 +42,10 @@
                                         CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
                                         Text="<%$ Resources:Dashboard,students%>" />
 
-
-
-
-
                                     <asp:Button ID="SesionHistory" Width="80px" runat="server"
                                         CommandName="SessionHistory"
                                         CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
                                         Text="<%$ Resources:HamoonResource,SessionHistory%>" />
-
-
-
 
                                     <asp:Button ID="NewSesion" CssClass="StudentsButton" Width="80px" runat="server"
                                         CommandName="NewSession"
