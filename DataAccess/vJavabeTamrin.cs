@@ -16,7 +16,7 @@ namespace DataAccess
     {
         public int JavabID { get; set; }
         public Nullable<int> TamrinTamrinID { get; set; }
-        public Nullable<int> OzviatID { get; set; }
+        public Nullable<int> Expr5 { get; set; }
         public string FilePath { get; set; }
         public string JavabeTamrinDescription { get; set; }
         public string SendingTime { get; set; }
@@ -26,8 +26,8 @@ namespace DataAccess
         public Nullable<int> GroupID { get; set; }
         public string StartDate { get; set; }
         public string ExpirationDate { get; set; }
-        public string Description { get; set; }
-        public int LGID { get; set; }
+        public string Expr3 { get; set; }
+        public int Expr2 { get; set; }
         public string Class { get; set; }
         public Nullable<int> LessonID { get; set; }
         public string TeacherCode { get; set; }
@@ -42,9 +42,6 @@ namespace DataAccess
         public int OzviatOzviatID { get; set; }
         public Nullable<int> OzviatLGID { get; set; }
         public string OzviatStudentCode { get; set; }
-        public Nullable<int> Expr5 { get; set; }
-        public string Expr3 { get; set; }
-        public int Expr2 { get; set; }
         public Nullable<int> CGrade { get; set; }
     }
 }

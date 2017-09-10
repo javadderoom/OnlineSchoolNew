@@ -12,17 +12,12 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class JavabeTamrin
+    public partial class sysdiagram
     {
-        public int JavabID { get; set; }
-        public Nullable<int> TamrinID { get; set; }
-        public Nullable<int> OzviatID { get; set; }
-        public string FilePath { get; set; }
-        public string Description { get; set; }
-        public string SendingTime { get; set; }
-        public string SendingDate { get; set; }
-    
-        public virtual Ozviat Ozviat { get; set; }
-        public virtual Tamarin Tamarin { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

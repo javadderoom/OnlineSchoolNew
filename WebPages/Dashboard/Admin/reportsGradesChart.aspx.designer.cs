@@ -22,24 +22,6 @@ namespace WebPages.Dashboard.Admin {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// lll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lll;
-        
-        /// <summary>
-        /// ddlYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlYear;
-        
-        /// <summary>
         /// lblMaghta control.
         /// </summary>
         /// <remarks>
@@ -94,12 +76,12 @@ namespace WebPages.Dashboard.Admin {
         protected global::System.Web.UI.WebControls.GridView gvClasses;
         
         /// <summary>
-        /// btnViewAll control.
+        /// gozareshNemoodari control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnViewAll;
+        protected global::System.Web.UI.HtmlControls.HtmlButton gozareshNemoodari;
     }
 }

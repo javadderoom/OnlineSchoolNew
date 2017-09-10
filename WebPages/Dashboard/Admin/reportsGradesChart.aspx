@@ -19,10 +19,7 @@
             <asp:Literal runat="server" Text="<%$ Resources:sasanRes,reports%>" />
         </h4>
     </div>
-    <div style="direction: rtl; display: block">
-        <asp:Label ID="lll" runat="server" Text="گزارش بر اساس سال"></asp:Label>
-        <asp:DropDownList ID="ddlYear" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlYear_SelectedIndexChanged"></asp:DropDownList>
-    </div>
+
     <br />
     <div class="form-group">
         <div class="row">
@@ -122,7 +119,7 @@
     </asp:UpdatePanel>
     <div class="row">
         <div class="col-md-5 col-md-push-7 col-xs-6 col-xs-push-6">
-            <button type="button" id="btnViewAll" class="btn btn-auto-h btn-info goRight" runat="server" style="margin-right: 5px;" onserverclick="btnShowAll_Click">
+            <button type="button" id="gozareshNemoodari" class="btn btn-auto-h btn-info goRight" runat="server" style="margin-right: 5px;" onserverclick="gozareshNemoodari_ServerClick">
                 <asp:Literal runat="server" Text="گزارشات نموداری" />
                 <span class="fa fa-list"></span>
             </button>

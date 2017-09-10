@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Admin/AdminPanel.Master" AutoEventWireup="true" CodeBehind="reportsLessonGroups.aspx.cs" Inherits="WebPages.Dashboard.Admin.reportsLessonGroups" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Admin/AdminPanel.Master" AutoEventWireup="true" CodeBehind="reportsFields.aspx.cs" Inherits="WebPages.Dashboard.Admin.reportsFields" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -16,7 +16,7 @@
     <div class="c-title">
         <h4>
 
-            <asp:Literal runat="server" Text="<%$ Resources:Dashboard,LessonGroups%>" />
+            <asp:Literal runat="server" Text="مقاطع" />
         </h4>
     </div>
     <div class="x_content">
@@ -38,20 +38,7 @@
             </div>
             <div class="col-md-4 col-xs-12 text-righ">
             </div>
-            <div class="col-md-4 col-xs-12 text-righ pull-right" style="float: right">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button type="button" id="btnSearch" class="btn btn-primary" runat="server" onserverclick="btnSearch_Click">
-                            <span class="fa fa-search"></span>
-                        </button>
-                    </span>
 
-                    <div id="ContentPlaceHolder1_upSearch">
-
-                        <input name="ctl00$ContentPlaceHolder1$tbxnameSearch" runat="server" placeholder="جستجو" type="text" maxlength="50" id="tbxSearch" class="form-control text-right dirRight" />
-                    </div>
-                </div>
-            </div>
         </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -61,18 +48,11 @@
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="gvLessonGroups" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False"
-                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvEmployees_RowDataBound" AllowPaging="True" OnSelectedIndexChanged="gvEmployees_SelectedIndexChanged" OnRowEditing="gvEmployees_RowEditing" OnRowCommand="gvEmployees_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
+                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvLessonGroups_RowDataBound" AllowPaging="True" OnSelectedIndexChanged="gvLessonGroups_SelectedIndexChanged" OnRowCommand="gvLessonGroups_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
                             <Columns>
-                                <asp:BoundField DataField="LGID" HeaderText="<%$ Resources:Dashboard,ID%>" />
-                                <asp:BoundField DataField="Class" HeaderText="<%$ Resources:Dashboard,Class%>" />
-                                <asp:BoundField DataField="LessonTitle" HeaderText="<%$ Resources:Dashboard,LessonTitle%>" />
-                                <asp:BoundField DataField="Unit" HeaderText="<%$ Resources:Dashboard,Unit%>" />
-                                <asp:BoundField DataField="teacherFullName" HeaderText="<%$ Resources:Dashboard,TeacherFName%>" />
+                                <asp:BoundField DataField="GradeID" HeaderText="<%$ Resources:Dashboard,ID%>" />
+                                <asp:BoundField DataField="GradeTitle" HeaderText="مقطع" />
 
-                                <asp:BoundField DataField="GradeTitle" HeaderText="<%$ Resources:Dashboard,GradeTitle%>" />
-                                <asp:BoundField DataField="Day" HeaderText="<%$ Resources:Dashboard,Day%>" />
-                                <asp:BoundField DataField="Time" HeaderText="<%$ Resources:Dashboard,Time%>" />
-                                <asp:BoundField DataField="Year" HeaderText="<%$ Resources:Dashboard,Year%>" />
                                 <asp:TemplateField ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Justify">
                                     <ItemTemplate>
 
@@ -272,15 +252,11 @@
         </asp:UpdatePanel>
 
         <div class="row">
-            <div class="col-md-5 col-md-push-7 col-xs-6 col-xs-push-6">
-                <button type="button" id="btnViewAll" class="btn btn-auto-h btn-info goRight" runat="server" style="margin-right: 5px;" onserverclick="btnShowAll_Click">
-                    <asp:Literal runat="server" Text="<%$ Resources:Dashboard,ShowAll%>" />
-                    <span class="fa fa-list"></span>
-                </button>
-            </div>
+
             <div class="extra" style="height: 100px">
             </div>
         </div>
     </div>
     <script src="../JavaScript/JavaScript.js"></script>
+
 </asp:Content>

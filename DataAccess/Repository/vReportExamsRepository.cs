@@ -59,6 +59,7 @@ namespace DataAccess.Repository
         {
 
             var v = db.vReportExams.Where(p => p.LGID == id).Where(p => p.ExamType == katbiOrShafahi).Select(p => p.SessionID);
+            //v = from r in db.vReportExams where r.LGID == id && r.ExamType == katbiOrShafahi select 
             List<int?> l = v.ToList();
             return l.Distinct().Count();
         }
@@ -98,19 +99,24 @@ namespace DataAccess.Repository
             return dtResult;
         }
 
-        public decimal? getAverageGrade(int id, int examtype, string year)
+        public decimal? getAverageGrade(int id, int examtype)
         {
-            decimal? query = (
-           from r in db.vReportExams
-           where (r.CGrade == id) && r.ExamType == examtype && r.Year == year
-           select r.Nomre).Average();
+            string Command = string.Format("select AVG(nomre) from vReportExams where CGrade = {0} and ExamType = {1} and Year =  (select top 1 Year from LessonGroups order by LessonGroups.Year desc)", id, examtype);
+            SqlConnection myConnection = new SqlConnection(vReportExamsRepository.conString);
+            SqlCommand com = new SqlCommand(Command, myConnection);
+            myConnection.Open();
+            string s = com.ExecuteScalar().ToString();
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            decimal? avg = Convert.ToDecimal(s);
+            myConnection.Close();
 
-            return query;
+            return avg;
         }
 
-        public DataTable topClassesByGradeID(int id, string year)
+        public DataTable topClassesByGradeID(int id)
         {
-            string Command = string.Format("select Class, avg(Nomre) as avgNomre  from vReportExams v where CGrade = {0} and v.Year = '{1}' group by Class order by avgNomre desc", id, year);
+            string Command = string.Format("select Class, avg(Nomre) as avgNomre  from vReportExams v where CGrade = {0} and v.Year = (select top 1 Year from LessonGroups order by LessonGroups.Year desc) group by Class order by avgNomre desc", id);
             SqlConnection myConnection = new SqlConnection(conString);
             SqlDataAdapter myDataAdapter = new SqlDataAdapter(Command, myConnection);
             DataTable dtResult = new DataTable();

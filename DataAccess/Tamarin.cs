@@ -26,8 +26,7 @@ namespace DataAccess
         public string ExpirationDate { get; set; }
         public string Description { get; set; }
     
-        public virtual JavabeTamrin JavabeTamrin { get; set; }
-        public virtual LessonGroup LessonGroup { get; set; }
         public virtual ICollection<JavabeTamrin> JavabeTamrins { get; set; }
+        public virtual LessonGroup LessonGroup { get; set; }
     }
 }

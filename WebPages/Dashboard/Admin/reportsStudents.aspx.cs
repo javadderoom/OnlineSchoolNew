@@ -32,7 +32,10 @@ namespace WebPages.Dashboard.Admin
 
         protected void gvStudents_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = gvStudents.Rows[index];
 
+            Response.Redirect("http://localhost:4911/Dashboard/Admin/reportsStudentsChart.aspx?stuCode=" + row.Cells[0].Text);
         }
 
         protected void btnSearch_ServerClick(object sender, EventArgs e)

@@ -150,6 +150,9 @@
   <data name="fname" xml:space="preserve">
     <value>نام</value>
   </data>
+  <data name="fullName" xml:space="preserve">
+    <value>نام و نام خانوادگی</value>
+  </data>
   <data name="gradereports" xml:space="preserve">
     <value>گزارش مقاطع</value>
   </data>

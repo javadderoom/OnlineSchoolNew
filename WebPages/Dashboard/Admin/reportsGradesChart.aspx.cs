@@ -17,31 +17,21 @@ namespace WebPages.Dashboard.Admin
             id = Request.QueryString["GradeID"];
             if (!IsPostBack)
             {
-                fillDropDownList();
-                setLabels(ddlYear.SelectedItem.Text.ToString());
-                setGrid(ddlYear.SelectedItem.Text.ToString());
+                setLabels();
+                setGrid();
 
             }
         }
 
-        private void fillDropDownList()
-        {
-            vReportExamsRepository v = new vReportExamsRepository();
-            List<string> l = v.getYearsList();
-            foreach (string s in l)
-            {
-                ddlYear.Items.Add(s);
-            }
-        }
 
-        private void setGrid(string year)
+        private void setGrid()
         {
             vReportExamsRepository vr = new vReportExamsRepository();
-            gvClasses.DataSource = vr.topClassesByGradeID(id.ToInt(), year);
+            gvClasses.DataSource = vr.topClassesByGradeID(id.ToInt());
             gvClasses.DataBind();
         }
 
-        private void setLabels(string year)
+        private void setLabels()
         {
             GradesRepository gr = new GradesRepository();
             lblMaghta.InnerText = gr.getGradeTitleByID(id.ToInt());
@@ -50,8 +40,8 @@ namespace WebPages.Dashboard.Admin
             lblStudentCount.InnerText = s.studentCountbyGradeID(id.ToInt()).ToString();
 
             vReportExamsRepository vre = new vReportExamsRepository();
-            lblmianginkatbi.InnerText = Convert.ToDouble(vre.getAverageGrade(id.ToInt(), 0, year)).ToString();
-            lblmianginshafahi.InnerText = Convert.ToDouble(vre.getAverageGrade(id.ToInt(), 1, year)).ToString();
+            lblmianginkatbi.InnerText = Convert.ToDouble(vre.getAverageGrade(id.ToInt(), 0)).ToString();
+            lblmianginshafahi.InnerText = Convert.ToDouble(vre.getAverageGrade(id.ToInt(), 1)).ToString();
         }
 
         protected void gvClasses_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -59,11 +49,9 @@ namespace WebPages.Dashboard.Admin
 
         }
 
-        protected void ddlYear_SelectedIndexChanged(object sender, EventArgs e)
+        protected void gozareshNemoodari_ServerClick(object sender, EventArgs e)
         {
-            setLabels(ddlYear.SelectedValue.ToString());
-            setGrid(ddlYear.SelectedValue.ToString());
-            //Page_Load(null, null);
+
         }
     }
 }

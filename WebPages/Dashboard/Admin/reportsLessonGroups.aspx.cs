@@ -23,7 +23,7 @@ namespace WebPages.Dashboard.Admin
         public void LoadLessonGroups()
         {
             vLessonGroupRepository sr = new vLessonGroupRepository();
-            gvLessonGroups.DataSource = sr.GetAllLessonGroups();
+            gvLessonGroups.DataSource = sr.getAllLessonGroupsOfCurrentYear();
             gvLessonGroups.DataBind();
             foreach (GridViewRow row in gvLessonGroups.Rows)
             {

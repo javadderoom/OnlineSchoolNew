@@ -643,13 +643,14 @@
     <Content Include="Dashboard\Admin\LessonGroups.aspx" />
     <Content Include="Dashboard\Admin\Lessons.aspx" />
     <Content Include="Dashboard\Admin\News.aspx" />
-    <Content Include="Dashboard\Admin\reportsStudentsChart.aspx" />
+    <Content Include="Dashboard\Admin\reportsFields.aspx" />
     <Content Include="Dashboard\Admin\reportsStudents.aspx" />
     <Content Include="Dashboard\Admin\reportsGradesChart.aspx" />
     <Content Include="Dashboard\Admin\reportsGrades.aspx" />
     <Content Include="Dashboard\Admin\reportsLessonGroups.aspx" />
     <Content Include="Dashboard\Admin\reportsLessonGroupsChart.aspx" />
     <Content Include="Dashboard\Admin\NewSesion.aspx" />
+    <Content Include="Dashboard\Admin\reportsStudentsChart.aspx" />
     <Content Include="Dashboard\Admin\SesionHistory.aspx" />
     <Content Include="Dashboard\Admin\Students.aspx" />
     <Content Include="Dashboard\Admin\studentsPayment.aspx" />
@@ -956,12 +957,12 @@
     <Compile Include="Dashboard\Admin\News.aspx.designer.cs">
       <DependentUpon>News.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard\Admin\reportsStudentsChart.aspx.cs">
-      <DependentUpon>reportsStudentsChart.aspx</DependentUpon>
+    <Compile Include="Dashboard\Admin\reportsFields.aspx.cs">
+      <DependentUpon>reportsFields.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Dashboard\Admin\reportsStudentsChart.aspx.designer.cs">
-      <DependentUpon>reportsStudentsChart.aspx</DependentUpon>
+    <Compile Include="Dashboard\Admin\reportsFields.aspx.designer.cs">
+      <DependentUpon>reportsFields.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Admin\reportsStudents.aspx.cs">
       <DependentUpon>reportsStudents.aspx</DependentUpon>
@@ -1004,6 +1005,13 @@
     </Compile>
     <Compile Include="Dashboard\Admin\NewSesion.aspx.designer.cs">
       <DependentUpon>NewSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Admin\reportsStudentsChart.aspx.cs">
+      <DependentUpon>reportsStudentsChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Admin\reportsStudentsChart.aspx.designer.cs">
+      <DependentUpon>reportsStudentsChart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Admin\SesionHistory.aspx.cs">
       <DependentUpon>SesionHistory.aspx</DependentUpon>

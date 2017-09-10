@@ -18,7 +18,7 @@ namespace DataAccess
         public string fullName { get; set; }
         public string FirstName { get; set; }
         public Nullable<int> CGrade { get; set; }
-        public string stuClass { get; set; }
         public string gradeTitle { get; set; }
+        public string stuClass { get; set; }
     }
 }
