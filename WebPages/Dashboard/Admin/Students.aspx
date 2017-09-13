@@ -54,50 +54,52 @@
                 </div>
             </div>
         </div>
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div id="ContentPlaceHolder1_upGrid">
-            <div>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
+        <div id="gridtoprint">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <div id="ContentPlaceHolder1_upGrid">
+                <div>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
 
-                        <asp:GridView ID="gvStudents" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False" CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvStudents_RowDataBound" AllowCustomPaging="True" AllowPaging="True" OnSelectedIndexChanged="gvStudents_SelectedIndexChanged" OnRowEditing="gvStudents_RowEditing" OnRowCommand="gvStudents_RowCommand">
-                            <Columns>
-                                <asp:BoundField DataField="studentCode" HeaderText="<%$ Resources:Dashboard,shomare_daneshamozi%>" />
-                                <asp:BoundField DataField="FirstName" HeaderText="<%$ Resources:Dashboard,name%>" />
-                                <asp:BoundField DataField="LastName" HeaderText="<%$ Resources:Dashboard,family%>" />
-                                <asp:BoundField DataField="FathersFirstName" HeaderText="<%$ Resources:Dashboard,father_name%>" />
+                            <asp:GridView ID="gvStudents" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False" CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvStudents_RowDataBound" AllowCustomPaging="True" AllowPaging="True" OnSelectedIndexChanged="gvStudents_SelectedIndexChanged" OnRowEditing="gvStudents_RowEditing" OnRowCommand="gvStudents_RowCommand">
+                                <Columns>
+                                    <asp:BoundField DataField="studentCode" HeaderText="<%$ Resources:Dashboard,shomare_daneshamozi%>" />
+                                    <asp:BoundField DataField="FirstName" HeaderText="<%$ Resources:Dashboard,name%>" />
+                                    <asp:BoundField DataField="LastName" HeaderText="<%$ Resources:Dashboard,family%>" />
+                                    <asp:BoundField DataField="FathersFirstName" HeaderText="<%$ Resources:Dashboard,father_name%>" />
 
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:Button ID="Edid" runat="server"
-                                            CommandName="Edit"
-                                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-                                            Text="<%$ Resources:Dashboard,edite%>" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button ID="Edid" runat="server"
+                                                CommandName="Edit"
+                                                CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
+                                                Text="<%$ Resources:Dashboard,edite%>" />
 
-                                        <asp:Button ID="Details" runat="server"
-                                            CommandName="Details"
-                                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-                                            Text="<%$ Resources:Dashboard,Details%>" />
+                                            <asp:Button ID="Details" runat="server"
+                                                CommandName="Details"
+                                                CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
+                                                Text="<%$ Resources:Dashboard,Details%>" />
 
-                                        <asp:Button OnClientClick="if(!confirm('ایا مطمئن هستید؟')) return false;" ID="Delet" runat="server"
-                                            CommandName="Delet"
-                                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-                                            Text="<%$ Resources:Dashboard,delete%>" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
+                                            <asp:Button OnClientClick="if(!confirm('ایا مطمئن هستید؟')) return false;" ID="Delet" runat="server"
+                                                CommandName="Delet"
+                                                CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
+                                                Text="<%$ Resources:Dashboard,delete%>" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
 
-                            <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-                            <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                            <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
-                            <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F7F7F7" />
-                            <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
-                            <SortedDescendingCellStyle BackColor="#E5E5E5" />
-                            <SortedDescendingHeaderStyle BackColor="#242121" />
-                        </asp:GridView>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                                <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                                <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                                <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                                <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                                <SortedDescendingHeaderStyle BackColor="#242121" />
+                            </asp:GridView>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -106,6 +108,7 @@
                     <asp:Literal runat="server" Text="<%$ Resources:Dashboard,ShowAll%>" />
                     <span class="fa fa-list"></span>
                 </button>
+                <input name="b_print" type="button" class="btn btn-primary" onclick="printdiv('gridtoprint');" value=" Print " />
             </div>
             <div class="extra" style="height: 100px">
             </div>
@@ -119,7 +122,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 class="modal-title" id="modalAskSubmitUpdate-label">هشدار
 
                                                     <span class="glyphicon glyphicon-warning-sign"></span>
@@ -303,7 +306,7 @@
                                     <button type="button" class="btn btn-default " data-dismiss="modal">
                                         <asp:Literal runat="server" Text="<%$ Resources:Dashboard,back%>" />
                                     </button>
-                                    <button type="button" id="btnPrint" class="btn btn-default" onclick=" my()">print</button>
+                                    <input name="b_print2" type="button" class="btn btn-primary" data-dismiss="modal" onclick="printdiv('divtoprint');" value=" Print " />
                                 </div>
                             </div>
                         </div>
@@ -312,22 +315,24 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-
     <script>
-        function my() {
+        function printdiv(printpage) {
 
-            var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+            var headstr = "<html><head><title></title></head><body>";
+            var footstr = "</body>";
+            var newstr = document.all.item(printpage).innerHTML;
+            var oldstr = document.body.innerHTML;
+            document.body.innerHTML = headstr + newstr + footstr;
+            window.print();
+            document.body.innerHTML = oldstr;
+            $('#modalShowDetails').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            $('.fade').remove();
 
-            mywindow.document.write(document.getElementById("divtoprint").innerHTML);
-
-            mywindow.document.close(); // necessary for IE >= 10
-            mywindow.focus(); // necessary for IE >= 10*/
-
-            mywindow.print();
-            mywindow.close();
-
-            return true;
-
+            return false;
         }
+
+
     </script>
 </asp:Content>
