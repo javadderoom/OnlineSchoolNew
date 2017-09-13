@@ -108,7 +108,7 @@
                     <asp:Literal runat="server" Text="<%$ Resources:Dashboard,ShowAll%>" />
                     <span class="fa fa-list"></span>
                 </button>
-                <input name="b_print" type="button" class="btn-primary" onclick="printdiv('gridtoprint');" value=" Print " />
+                <input name="b_print" type="button" class="btn btn-primary" onclick="printdiv('gridtoprint');" value=" Print " />
             </div>
             <div class="extra" style="height: 100px">
             </div>
@@ -122,7 +122,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <button type="button" id="btnClose" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 class="modal-title" id="modalAskSubmitUpdate-label">هشدار
 
                                                     <span class="glyphicon glyphicon-warning-sign"></span>
@@ -306,7 +306,7 @@
                                     <button type="button" class="btn btn-default " data-dismiss="modal">
                                         <asp:Literal runat="server" Text="<%$ Resources:Dashboard,back%>" />
                                     </button>
-                                    <input name="b_print2" type="button" class="btn-primary" onclick="printdiv('divtoprint');" value=" Print " />
+                                    <input name="b_print2" type="button" class="btn btn-primary" data-dismiss="modal" onclick="printdiv('divtoprint');" value=" Print " />
                                 </div>
                             </div>
                         </div>
@@ -317,6 +317,7 @@
     </asp:UpdatePanel>
     <script>
         function printdiv(printpage) {
+
             var headstr = "<html><head><title></title></head><body>";
             var footstr = "</body>";
             var newstr = document.all.item(printpage).innerHTML;
@@ -324,7 +325,14 @@
             document.body.innerHTML = headstr + newstr + footstr;
             window.print();
             document.body.innerHTML = oldstr;
+            $('#modalShowDetails').modal('hide');
+            $('body').removeClass('modal-open');
+            $('.modal-backdrop').remove();
+            $('.fade').remove();
+
             return false;
         }
+
+
     </script>
 </asp:Content>
