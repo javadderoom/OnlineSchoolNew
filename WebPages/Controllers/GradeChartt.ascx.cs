@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using DataAccess;
 using DataAccess.Repository;
 using Highsoft.Web.Mvc.Charts;
 
-namespace WebPages.Dashboard.Controllers
+namespace WebPages.Controllers
 {
-    public partial class GradeChart : System.Web.UI.UserControl
+    public partial class GradeChartt : System.Web.UI.UserControl
     {
         public int myIntProperty { get; set; }
 
@@ -18,25 +13,28 @@ namespace WebPages.Dashboard.Controllers
         {
             vReportExamsRepository rep = new vReportExamsRepository();
             vLessonGroupRepository lgr = new vLessonGroupRepository();
-
+            ////////////// لیست لیست دیتای اولیه //////////////////
             List<List<decimal?>> datalist = new List<List<decimal?>>();
+            //////////////////////// لیست دیتای اولیه////////////////////////////
             List<decimal?> ll;
+            ////////////////////// لیست کلاس ها//////////////
             List<string> classes = new List<string>();
-
             string year = lgr.GetLastestYear();
-            classes = lgr.GetClassesOfGrade(6, year);
+            classes = lgr.GetClassesOfGrade(myIntProperty, year);
+            ///////////////////////// تعداد کلاس ////////////
             int classCount = classes.Count;
-
-            List<string> s = rep.GetClassMonthForChart(classes[0]);
-
+            /////////////////ماه ها //////////////////
+            List<string> s = new List<string>() { "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند", "فروردین", "اردیبهشت", "خرداد" };
+            /////////////////////////////////////
             //.ConvertAll(new Converter<decimal?, decimal>())
-
+            ////////////////// پر کردن لیست لیست دیتا اولیه//////////////////
             for (int i = 0; i < classCount; i++)
             {
                 ll = new List<decimal?>();
                 ll = rep.GetAvgOfClassPerMonth(classes[i]);
                 datalist.Add(ll);
             }
+            ///////////////تبدیل دیتای اولیه به دیتای چارت/////////////////
             List<decimal?> l;
             List<List<LineSeriesData>> liststudentdata = new List<List<LineSeriesData>>();
             List<LineSeriesData> studentData;
@@ -48,7 +46,7 @@ namespace WebPages.Dashboard.Controllers
                 l.ForEach(p => studentData.Add(new LineSeriesData { Y = (double)p }));
                 liststudentdata.Add(studentData);
             }
-
+            ///////////// دادن دیتا به چارت  /////////////////////////////
             LineSeries ss;
 
             List<Series> ser = new List<Series>();

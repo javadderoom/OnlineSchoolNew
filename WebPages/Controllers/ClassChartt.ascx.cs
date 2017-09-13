@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using DataAccess;
 using DataAccess.Repository;
 using Highsoft.Web.Mvc.Charts;
+using System.Data;
 
-namespace WebPages.Dashboard.Controllers
+namespace WebPages.Controllers
 {
-    public partial class GradeChart : System.Web.UI.UserControl
+    public partial class ClassChartt : System.Web.UI.UserControl
     {
         public int myIntProperty { get; set; }
 
@@ -21,20 +17,21 @@ namespace WebPages.Dashboard.Controllers
 
             List<List<decimal?>> datalist = new List<List<decimal?>>();
             List<decimal?> ll;
-            List<string> classes = new List<string>();
+            List<string> studentsList = new List<string>();
+            List<string> studentsNames = new List<string>();
+            // string year = lgr.GetLastestYear();
+            studentsList = lgr.GetStudentCodeOfLessonGroup(41);
+            studentsNames = lgr.GetStudentNameOfLessonGroup(41);
+            int studentCount = studentsList.Count;
 
-            string year = lgr.GetLastestYear();
-            classes = lgr.GetClassesOfGrade(6, year);
-            int classCount = classes.Count;
-
-            List<string> s = rep.GetClassMonthForChart(classes[0]);
+            List<string> s = new List<string>() { "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند", "فروردین", "اردیبهشت", "خرداد" };
 
             //.ConvertAll(new Converter<decimal?, decimal>())
 
-            for (int i = 0; i < classCount; i++)
+            for (int i = 0; i < studentCount; i++)
             {
                 ll = new List<decimal?>();
-                ll = rep.GetAvgOfClassPerMonth(classes[i]);
+                ll = rep.GetAvgOfStudentPerMonth(studentsList[i]);
                 datalist.Add(ll);
             }
             List<decimal?> l;
@@ -43,6 +40,7 @@ namespace WebPages.Dashboard.Controllers
 
             for (int i = 0; i < datalist.Count; i++)
             {
+                l = new List<decimal?>();
                 l = datalist[i];
                 studentData = new List<LineSeriesData>();
                 l.ForEach(p => studentData.Add(new LineSeriesData { Y = (double)p }));
@@ -56,7 +54,7 @@ namespace WebPages.Dashboard.Controllers
             for (int i = 0; i < datalist.Count; i++)
             {
                 ss = new LineSeries();
-                ss.Name = classes[i];
+                ss.Name = studentsNames[i];
                 ss.Data = liststudentdata[i];
 
                 ser.Add(ss);

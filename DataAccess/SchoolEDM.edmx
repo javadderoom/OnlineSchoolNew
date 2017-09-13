@@ -267,7 +267,7 @@ warning 6002: The table/view 'SchoolDB.dbo.vAvgStudentPerMonth' does not have a 
           </Key>
           <Property Name="StudentCode" Type="nvarchar" MaxLength="10" />
           <Property Name="mnth" Type="nvarchar" MaxLength="2" />
-          <Property Name="avgNomre" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="AvgNomre" Type="decimal" Precision="10" Scale="2" />
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -859,7 +859,7 @@ FROM [dbo].[vAvgPerMonth] AS [vAvgPerMonth]</DefiningQuery>
             <DefiningQuery>SELECT 
 [vAvgStudentPerMonth].[StudentCode] AS [StudentCode], 
 [vAvgStudentPerMonth].[mnth] AS [mnth], 
-[vAvgStudentPerMonth].[avgNomre] AS [avgNomre], 
+[vAvgStudentPerMonth].[AvgNomre] AS [AvgNomre], 
 [vAvgStudentPerMonth].[ID] AS [ID], 
 [vAvgStudentPerMonth].[Title] AS [Title]
 FROM [dbo].[vAvgStudentPerMonth] AS [vAvgStudentPerMonth]</DefiningQuery>
@@ -2147,7 +2147,7 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           </Key>
           <Property Name="StudentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="mnth" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="avgNomre" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="AvgNomre" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -2725,7 +2725,7 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
               <MappingFragment StoreEntitySet="vAvgStudentPerMonth">
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="avgNomre" ColumnName="avgNomre" />
+                <ScalarProperty Name="AvgNomre" ColumnName="AvgNomre" />
                 <ScalarProperty Name="mnth" ColumnName="mnth" />
                 <ScalarProperty Name="StudentCode" ColumnName="StudentCode" />
               </MappingFragment>

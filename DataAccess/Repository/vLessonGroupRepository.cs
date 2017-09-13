@@ -95,6 +95,21 @@ namespace DataAccess.Repository
             return result;
         }
 
+        public List<int> GetstudentsOfClass(string clas, string year)
+        {
+            List<int> result = new List<int>();
+
+            SchoolDBEntities sd = conn.GetContext();
+
+            IQueryable<int> pl =
+                from r in sd.LessonGroups
+                where r.Class == clas && r.Year == year
+                select r.LGID;
+
+            result = pl.ToList();
+            return result;
+        }
+
         public string GetLastestYear()
         {
             SchoolDBEntities sd = conn.GetContext();
@@ -106,6 +121,33 @@ namespace DataAccess.Repository
                  select r.Year).Take(1).FirstOrDefault();
 
             return pl;
+        }
+
+        public List<string> GetStudentCodeOfLessonGroup(int lgid)
+        {
+            List<string> result = new List<string>();
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<string> pl =
+                from r in sd.Ozviats
+
+                where r.LGID == lgid
+                select r.StudentCode;
+            result = pl.ToList();
+            return result;
+        }
+
+        public List<string> GetStudentNameOfLessonGroup(int lgid)
+        {
+            List<string> result = new List<string>();
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<string> pl =
+               from r in sd.Ozviats
+               join o in sd.Students
+               on r.StudentCode equals o.StudentCode
+               where r.LGID == lgid
+               select o.FirstName + " " + o.LastName;
+            result = pl.ToList();
+            return result;
         }
 
         public List<string> GetlistOfAllYears()

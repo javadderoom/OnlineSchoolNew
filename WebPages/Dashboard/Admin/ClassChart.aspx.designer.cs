@@ -10,7 +10,7 @@
 namespace WebPages.Dashboard.Admin {
     
     
-    public partial class GradeChart {
+    public partial class ClassChart {
         
         /// <summary>
         /// form1 control.
@@ -22,12 +22,12 @@ namespace WebPages.Dashboard.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// GradeChartt control.
+        /// ClassChartt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebPages.Controllers.GradeChartt GradeChartt;
+        protected global::WebPages.Controllers.ClassChartt ClassChartt;
     }
 }

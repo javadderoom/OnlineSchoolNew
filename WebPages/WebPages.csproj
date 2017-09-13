@@ -177,6 +177,8 @@
     <Content Include="bin\WebPages.pdb" />
     <Content Include="bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll" />
     <Content Include="bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll" />
+    <Content Include="Controllers\ClassChartt.ascx" />
+    <Content Include="Controllers\GradeChartt.ascx" />
     <Content Include="Controllers\HighChartsControl.ascx" />
     <Content Include="Dashboard\Admin\AddEmployee.aspx" />
     <Content Include="Dashboard\Admin\AddLesson.aspx" />
@@ -731,6 +733,7 @@
     <Content Include="Dashboard\Admin\ckeditor\skins\moono-lisa\images\refresh.png" />
     <Content Include="Dashboard\Admin\ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="Dashboard\Admin\ckeditor\styles.js" />
+    <Content Include="Dashboard\Admin\ClassChart.aspx" />
     <Content Include="Dashboard\Admin\ClassMembers.aspx" />
     <Content Include="Dashboard\Admin\GradeChart.aspx" />
     <Content Include="Dashboard\Admin\reportsGrades.aspx" />
@@ -948,6 +951,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HamoonResource.resx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ClassChartt.ascx.cs">
+      <DependentUpon>ClassChartt.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controllers\ClassChartt.ascx.designer.cs">
+      <DependentUpon>ClassChartt.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\GradeChartt.ascx.cs">
+      <DependentUpon>GradeChartt.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controllers\GradeChartt.ascx.designer.cs">
+      <DependentUpon>GradeChartt.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HighChartsControl.ascx.cs">
       <DependentUpon>HighChartsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1004,6 +1021,13 @@
     </Compile>
     <Compile Include="Dashboard\Admin\adminStudentsPayment.aspx.designer.cs">
       <DependentUpon>adminStudentsPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Admin\ClassChart.aspx.cs">
+      <DependentUpon>ClassChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Admin\ClassChart.aspx.designer.cs">
+      <DependentUpon>ClassChart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Admin\ClassMembers.aspx.cs">
       <DependentUpon>ClassMembers.aspx</DependentUpon>

@@ -16,7 +16,7 @@ namespace DataAccess
     {
         public string StudentCode { get; set; }
         public string mnth { get; set; }
-        public Nullable<decimal> avgNomre { get; set; }
+        public Nullable<decimal> AvgNomre { get; set; }
         public int ID { get; set; }
         public string Title { get; set; }
     }
