@@ -219,6 +219,12 @@
                                     <span class="fa-stack fa-lg pull-left"></span>
                                 </a></li>
 
+                                <li><a href="http://localhost:4911/Dashboard/Admin/reportsFields.aspx" class="a-properties sub-menu">
+                                    <span class="glyphicon glyphicon-record icon-style" aria-hidden="true"></span>
+                                    <asp:Literal runat="server" Text="گزارش رشته ها" />
+                                    <span class="fa-stack fa-lg pull-left"></span>
+                                </a></li>
+
                             </ul>
 
                         </li>

@@ -65,5 +65,22 @@ namespace DataAccess.Repository
             myDataAdapter.Fill(dtResult);
             return dtResult;
         }
+
+        public int countStudentsByFieldID_GradeID(int fid, int gid)
+        {
+
+            string Command = (string.Format("select count(*) as cntStu from StuRegister where EduYear = (select top 1 EduYear from StuRegister order by EduYear desc)  and FieldID = {0} and RegGrade = {1}", fid, gid));
+
+            SqlConnection myConnection = new SqlConnection(vReportExamsRepository.conString);
+            SqlCommand com = new SqlCommand(Command, myConnection);
+            myConnection.Open();
+            string s = com.ExecuteScalar().ToString();
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            int cnt = Convert.ToInt32(s);
+            myConnection.Close();
+
+            return cnt;
+        }
     }
 }

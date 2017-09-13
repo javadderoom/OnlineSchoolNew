@@ -273,5 +273,14 @@ namespace DataAccess.Repository
             myDataAdapter.Fill(dtResult);
             return dtResult;
         }
+        public DataTable getStudentLessonGroups(int stuID)
+        {
+            string Command = string.Format("select *,FirstName+' '+LastName as teacherFullname from Ozviat inner join LessonGroups on Ozviat.LGID = LessonGroups.LGID inner join Karmand on LessonGroups.TeacherCode = Karmand.PersonalCode inner join Lessons on LessonGroups.LessonID = Lessons.LessonID where StudentCode = {0} and Year = (select top 1 year from LessonGroups order by Year desc)", stuID);
+            SqlConnection myConnection = new SqlConnection(vReportExamsRepository.conString);
+            SqlDataAdapter myDataAdapter = new SqlDataAdapter(Command, myConnection);
+            DataTable dtResult = new DataTable();
+            myDataAdapter.Fill(dtResult);
+            return dtResult;
+        }
     }
 }

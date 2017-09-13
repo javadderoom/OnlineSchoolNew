@@ -10,7 +10,7 @@
 namespace WebPages.Dashboard {
     
     
-    public partial class HomeWork {
+    public partial class LessonGroupsHomeWork {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -137,5 +137,14 @@ namespace WebPages.Dashboard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxYear;
+        
+        /// <summary>
+        /// btnViewAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnViewAll;
     }
 }

@@ -17,7 +17,7 @@ namespace DataAccess
         public int JavabID { get; set; }
         public Nullable<int> TamrinID { get; set; }
         public Nullable<int> OzviatID { get; set; }
-        public string FilePath { get; set; }
+        public byte[] fileData { get; set; }
         public string Description { get; set; }
         public string SendingTime { get; set; }
         public string SendingDate { get; set; }

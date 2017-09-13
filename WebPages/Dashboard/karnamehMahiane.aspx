@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="HomeWork.aspx.cs" Inherits="WebPages.Dashboard.HomeWork" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="karnamehMahiane.aspx.cs" Inherits="WebPages.Dashboard.karnamehMahiane" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -9,38 +9,28 @@
     <link href="Styles/bootstrap.css" rel="stylesheet" />
     <link href="Styles/simple-sidebar.css" rel="stylesheet" />
     <link href="Styles/AdminPanelStyles.css" rel="stylesheet" />
-
-    <%--  <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/simple-sidebar.css" rel="stylesheet" />--%>
-    <link href="font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="c-title">
         <h4>
 
-            <asp:Literal runat="server" Text="تکالیف" />
+            <asp:Literal runat="server" Text="کارنامه ماهیانه" />
         </h4>
     </div>
     <div class="x_content">
         <div class="row">
             <div class="col-md-4 hidden-xs">
                 <label style="padding-top: 5px;">
-                    نمایش
-                               
-                    <select name="ctl00$ContentPlaceHolder1$ddlPageSize" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ddlPageSize\',\'\')', 0)" id="ContentPlaceHolder1_ddlPageSize" style="font-weight: normal;">
-                        <option selected="selected" value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="75">75</option>
-                        <option value="100">100</option>
-                    </select>
-                    رکورد
-               
+
+
+                    <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                    ماه
                 </label>
             </div>
             <div class="col-md-4 col-xs-12 text-righ">
             </div>
-
+            <div class="col-md-4 col-xs-12 text-righ pull-right" style="float: right">
+            </div>
         </div>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -50,22 +40,18 @@
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="gvLessonGroups" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False"
-                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvLessonGroups_RowDataBound1" AllowPaging="True" OnRowCommand="gvLessonGroups_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
+                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvLessonGroups_RowDataBound" AllowPaging="false" EnableSortingAndPagingCallbacks="True" PageSize="5">
                             <Columns>
-                                <asp:BoundField DataField="TamrinID" HeaderText="<%$ Resources:Dashboard,ID%>" />
-                                <asp:BoundField DataField="TamrinTitle" HeaderText="عنوان تمرین" />
-                                <asp:BoundField DataField="dStartdate" HeaderText="تاریخ شروع" />
-                                <asp:BoundField DataField="dExpirationDate" HeaderText="تاریخ پایان" />
-
+                                <asp:BoundField DataField="LessonTitle" HeaderText="عنوان درس" />
+                                <asp:BoundField DataField="Unit" HeaderText="<%$ Resources:Dashboard,Unit%>" />
+                                <asp:BoundField DataField="teacherFullname" HeaderText="<%$ Resources:Dashboard,TeacherFName%>" />
+                                <asp:BoundField DataField="Nomre" HeaderText="نمره" />
+                                <asp:BoundField DataField="sDate" HeaderText="تاریخ جلسه" />
+                                <asp:BoundField DataField="SessionNum" HeaderText="شماره جلسه" />
+                                <asp:BoundField DataField="exam" HeaderText="نوع امتحان" />
 
                                 <asp:TemplateField ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Justify">
                                     <ItemTemplate>
-
-                                        <asp:Button ID="Details" runat="server"
-                                            CommandName="Details"
-                                            CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-                                            Text="جزییات" />
-
                                     </ItemTemplate>
 
                                     <ItemStyle HorizontalAlign="Justify" VerticalAlign="Middle"></ItemStyle>
@@ -83,6 +69,20 @@
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-3  text-right dirRight goLeft" style="float: right">
+                    <span id="iii" class="control-label formLabel" style="color: #666666; font-size: 100%; font-weight: bold;">
+                        <asp:Literal runat="server" Text="میانگین نمرات" /></span>
+                    <span class="fa fa-arrow-circle-down"></span>
+                    <br />
+                    <span runat="server" id="lblMiabgin" class="control-label formLabel" style="color: #0066CC; font-size: 100%; font-weight: bold;"></span>
+                </div>
+
             </div>
         </div>
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">

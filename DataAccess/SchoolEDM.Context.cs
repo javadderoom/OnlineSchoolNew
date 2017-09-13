@@ -27,6 +27,7 @@ namespace DataAccess
     
         public DbSet<AnjomanOlya> AnjomanOlyas { get; set; }
         public DbSet<Father> Fathers { get; set; }
+        public DbSet<Field> Fields { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<JavabeTamrin> JavabeTamrins { get; set; }
         public DbSet<Karmand> Karmands { get; set; }

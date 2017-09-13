@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="HomeWork.aspx.cs" Inherits="WebPages.Dashboard.HomeWork" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="reportsLessonGroups.aspx.cs" Inherits="WebPages.Dashboard.reportsLessonGroups" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -9,16 +9,12 @@
     <link href="Styles/bootstrap.css" rel="stylesheet" />
     <link href="Styles/simple-sidebar.css" rel="stylesheet" />
     <link href="Styles/AdminPanelStyles.css" rel="stylesheet" />
-
-    <%--  <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/simple-sidebar.css" rel="stylesheet" />--%>
-    <link href="font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="c-title">
         <h4>
 
-            <asp:Literal runat="server" Text="تکالیف" />
+            <asp:Literal runat="server" Text="<%$ Resources:Dashboard,LessonGroups%>" />
         </h4>
     </div>
     <div class="x_content">
@@ -50,21 +46,25 @@
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="gvLessonGroups" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False"
-                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvLessonGroups_RowDataBound1" AllowPaging="True" OnRowCommand="gvLessonGroups_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
+                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvLessonGroups_RowDataBound" AllowPaging="True" OnSelectedIndexChanged="gvLessonGroups_SelectedIndexChanged" OnRowEditing="gvLessonGroups_RowEditing" OnRowCommand="gvLessonGroups_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
                             <Columns>
-                                <asp:BoundField DataField="TamrinID" HeaderText="<%$ Resources:Dashboard,ID%>" />
-                                <asp:BoundField DataField="TamrinTitle" HeaderText="عنوان تمرین" />
-                                <asp:BoundField DataField="dStartdate" HeaderText="تاریخ شروع" />
-                                <asp:BoundField DataField="dExpirationDate" HeaderText="تاریخ پایان" />
+                                <asp:BoundField DataField="LGID" HeaderText="<%$ Resources:Dashboard,ID%>" />
+                                <asp:BoundField DataField="Class" HeaderText="<%$ Resources:Dashboard,Class%>" />
+                                <asp:BoundField DataField="LessonTitle" HeaderText="<%$ Resources:Dashboard,LessonTitle%>" />
+                                <asp:BoundField DataField="Unit" HeaderText="<%$ Resources:Dashboard,Unit%>" />
+                                <asp:BoundField DataField="teacherFullName" HeaderText="<%$ Resources:Dashboard,TeacherFName%>" />
 
 
+                                <asp:BoundField DataField="Day" HeaderText="<%$ Resources:Dashboard,Day%>" />
+                                <asp:BoundField DataField="Time" HeaderText="<%$ Resources:Dashboard,Time%>" />
+                                <asp:BoundField DataField="Year" HeaderText="<%$ Resources:Dashboard,Year%>" />
                                 <asp:TemplateField ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Justify">
                                     <ItemTemplate>
 
                                         <asp:Button ID="Details" runat="server"
                                             CommandName="Details"
                                             CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-                                            Text="جزییات" />
+                                            Text="<%$ Resources:sasanRes,details%>" />
 
                                     </ItemTemplate>
 
@@ -257,7 +257,12 @@
         </asp:UpdatePanel>
 
         <div class="row">
-
+            <div class="col-md-5 col-md-push-7 col-xs-6 col-xs-push-6" style="margin: auto">
+                <button type="button" id="btnViewAll" class="btn btn-auto-h btn-info goRight" runat="server" style="margin-right: 5px;">
+                    <asp:Literal runat="server" Text="گزارشات نموداری" />
+                    <span class="fa fa-list"></span>
+                </button>
+            </div>
             <div class="extra" style="height: 100px">
             </div>
         </div>

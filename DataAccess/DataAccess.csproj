@@ -34,6 +34,18 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FarsiLibrary.Resources">
+      <HintPath>D:\components\c#\PersianCalender\FarsiLibrary.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Utils">
+      <HintPath>D:\components\c#\PersianCalender\FarsiLibrary.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Win">
+      <HintPath>D:\components\c#\PersianCalender\FarsiLibrary.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="PersianCalander">
+      <HintPath>D:\components\c#\PersianCalender\PersianCalander.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -49,12 +61,18 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebCalendar">
+      <HintPath>D:\components\c#\PersianCalender\WebCalendar.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnjomanOlya.cs">
       <DependentUpon>SchoolEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Father.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Field.cs">
       <DependentUpon>SchoolEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Grade.cs">
@@ -91,6 +109,8 @@
     <Compile Include="Repository\AnjomanOlyaRepository.cs" />
     <Compile Include="Repository\FieldsRepository.cs" />
     <Compile Include="Repository\GradesRepository.cs" />
+    <Compile Include="Repository\KarnamehRepository.cs" />
+    <Compile Include="Repository\JavabeTamrinRepository.cs" />
     <Compile Include="Repository\SessionRepository.cs" />
     <Compile Include="Repository\BarnameRepository.cs" />
     <Compile Include="Repository\Connection.cs" />

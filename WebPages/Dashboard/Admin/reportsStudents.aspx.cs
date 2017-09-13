@@ -32,6 +32,7 @@ namespace WebPages.Dashboard.Admin
 
         protected void gvStudents_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvStudents.Rows[index];
 

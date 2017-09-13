@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Dashboard.Master" AutoEventWireup="true" CodeBehind="HomeWork.aspx.cs" Inherits="WebPages.Dashboard.HomeWork" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard/Admin/AdminPanel.Master" AutoEventWireup="true" CodeBehind="reportsFieldsSelect.aspx.cs" Inherits="WebPages.Dashboard.Admin.reportsFieldsSelect" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta charset="utf-8" />
@@ -6,19 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link href="Styles/bootstrap.css" rel="stylesheet" />
-    <link href="Styles/simple-sidebar.css" rel="stylesheet" />
-    <link href="Styles/AdminPanelStyles.css" rel="stylesheet" />
-
-    <%--  <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/simple-sidebar.css" rel="stylesheet" />--%>
-    <link href="font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../Styles/bootstrap.css" rel="stylesheet" />
+    <link href="../Styles/simple-sidebar.css" rel="stylesheet" />
+    <script src="../JavaScript/custom.min.js"></script>
+    <link href="../Styles/AdminPanelStyles.css" rel="stylesheet" />
+    <link href="../font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="c-title">
         <h4>
 
-            <asp:Literal runat="server" Text="تکالیف" />
+            <asp:Literal runat="server" Text="رشته ها" />
         </h4>
     </div>
     <div class="x_content">
@@ -50,13 +48,10 @@
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="gvLessonGroups" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False"
-                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvLessonGroups_RowDataBound1" AllowPaging="True" OnRowCommand="gvLessonGroups_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
+                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvLessonGroups_RowDataBound" AllowPaging="True" OnSelectedIndexChanged="gvLessonGroups_SelectedIndexChanged" OnRowCommand="gvLessonGroups_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
                             <Columns>
-                                <asp:BoundField DataField="TamrinID" HeaderText="<%$ Resources:Dashboard,ID%>" />
-                                <asp:BoundField DataField="TamrinTitle" HeaderText="عنوان تمرین" />
-                                <asp:BoundField DataField="dStartdate" HeaderText="تاریخ شروع" />
-                                <asp:BoundField DataField="dExpirationDate" HeaderText="تاریخ پایان" />
-
+                                <asp:BoundField DataField="FieldID" HeaderText="<%$ Resources:Dashboard,ID%>" />
+                                <asp:BoundField DataField="FieldTitle" HeaderText="رشته" />
 
                                 <asp:TemplateField ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Justify">
                                     <ItemTemplate>
@@ -64,7 +59,7 @@
                                         <asp:Button ID="Details" runat="server"
                                             CommandName="Details"
                                             CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-                                            Text="جزییات" />
+                                            Text="<%$ Resources:sasanRes,details%>" />
 
                                     </ItemTemplate>
 
@@ -264,6 +259,4 @@
     </div>
     <script src="../JavaScript/JavaScript.js"></script>
 
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>

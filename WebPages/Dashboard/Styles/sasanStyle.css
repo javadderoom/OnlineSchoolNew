@@ -1,2 +1,14 @@
 ﻿body {
 }
+
+
+.btnHomeWork {
+    width: 140px;
+    height: 80px;
+    background-color: #50935c;
+    float: right;
+    margin-left: 20px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}

@@ -1,4 +1,5 @@
-﻿using DataAccess.Repository;
+﻿using Common;
+using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace WebPages.Dashboard.Admin
 {
-    public partial class reportsFields : System.Web.UI.Page
+    public partial class reportsFieldsSelect : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +22,7 @@ namespace WebPages.Dashboard.Admin
         private void setGrid()
         {
             FieldsRepository fr = new FieldsRepository();
-            gvLessonGroups.DataSource = fr.getMaghateHaveFieldOfCurrentYear();
+            gvLessonGroups.DataSource = fr.getGardeFields(Session["GradeID"].ToString().ToInt());
             gvLessonGroups.DataBind();
         }
 
@@ -29,8 +30,8 @@ namespace WebPages.Dashboard.Admin
         {
             int index = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvLessonGroups.Rows[index];
-            Session.Add("GradeID", row.Cells[0].Text);
-            Response.Redirect("http://localhost:4911/Dashboard/Admin/reportsFieldsSelect.aspx");
+            Session.Add("FieldID", row.Cells[0].Text);
+            Response.Redirect("http://localhost:4911/Dashboard/Admin/reportsFieldsChart.aspx");
         }
 
         protected void gvLessonGroups_RowDataBound(object sender, GridViewRowEventArgs e)

@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebPages.Dashboard {
+namespace WebPages.Dashboard.Admin {
     
     
-    public partial class HomeWork {
+    public partial class reportsFieldsSelect {
         
         /// <summary>
         /// ScriptManager1 control.

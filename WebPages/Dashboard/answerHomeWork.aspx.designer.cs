@@ -10,7 +10,7 @@
 namespace WebPages.Dashboard {
     
     
-    public partial class HomeWork {
+    public partial class answerHomeWork {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -22,120 +22,93 @@ namespace WebPages.Dashboard {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// lblStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblStartDate;
         
         /// <summary>
-        /// gvLessonGroups control.
+        /// lblExpireDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvLessonGroups;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblExpireDate;
         
         /// <summary>
-        /// UpdatePanel2 control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// tbxID control.
+        /// tbxDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxID;
+        protected global::System.Web.UI.WebControls.TextBox tbxDesc;
         
         /// <summary>
-        /// tbxClass control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxClass;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// tbxLessonTitle control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxLessonTitle;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// tbxUnit control.
+        /// FileUpload1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxUnit;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// tbxTeacherFName control.
+        /// btnDownloadPre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxTeacherFName;
+        protected global::System.Web.UI.WebControls.Button btnDownloadPre;
         
         /// <summary>
-        /// tbxTeacherLName control.
+        /// btnAnswer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxTeacherLName;
+        protected global::System.Web.UI.WebControls.Button btnAnswer;
         
         /// <summary>
-        /// tbxGradeTitle control.
+        /// lblStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxGradeTitle;
-        
-        /// <summary>
-        /// tbxDay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxDay;
-        
-        /// <summary>
-        /// tbxTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxTime;
-        
-        /// <summary>
-        /// tbxYear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tbxYear;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
     }
 }
