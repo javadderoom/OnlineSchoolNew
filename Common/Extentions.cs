@@ -16,11 +16,12 @@ namespace Common
 
         public static Int32 ToInt(this string s)
         {
-            
-            
-                return (s.Length > 0 ? Int32.Parse(s) : 0);
-            
-          
+
+            if (string.IsNullOrEmpty(s))
+                return 0;
+            return (s.Length > 0 ? Int32.Parse(s) : 0);
+
+
         }
     }
 }

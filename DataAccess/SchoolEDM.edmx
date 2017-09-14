@@ -57,7 +57,7 @@
           <Property Name="JavabID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TamrinID" Type="int" />
           <Property Name="OzviatID" Type="int" />
-          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="fileData" Type="varbinary(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="SendingTime" Type="nvarchar" MaxLength="15" />
           <Property Name="SendingDate" Type="nvarchar" MaxLength="15" />
@@ -235,6 +235,18 @@
           <Property Name="EduYear" Type="nvarchar" MaxLength="5" />
           <Property Name="Class" Type="nvarchar" MaxLength="50" />
           <Property Name="FieldID" Type="int" />
+
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+
         </EntityType>
         <EntityType Name="Tamarin">
           <Key>
@@ -246,8 +258,19 @@
           <Property Name="StartDate" Type="nvarchar" MaxLength="10" />
           <Property Name="ExpirationDate" Type="nvarchar" MaxLength="10" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="fileData" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
+
+warning 6013: The table/view 'SchoolDB.dbo.vBarname' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vBarname">
+          <Property Name="Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="Day" Type="int" />
+          <Property Name="Time" Type="int" />
+          <Property Name="StudentCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="LessonTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+
 warning 6002: The table/view 'SchoolDB.dbo.vAvgPerMonth' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vAvgPerMonth">
           <Key>
@@ -271,6 +294,7 @@ warning 6002: The table/view 'SchoolDB.dbo.vAvgStudentPerMonth' does not have a 
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
         </EntityType>
+
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SchoolDB.dbo.vbarnameHaftegi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vbarnameHaftegi">
@@ -845,6 +869,7 @@ warning 6002: The table/view 'SchoolDB.dbo.vTamrin' does not have a primary key 
           <EntitySet Name="Sessoins" EntityType="Self.Sessoins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StuRegister" EntityType="Self.StuRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tamarin" EntityType="Self.Tamarin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vAvgPerMonth" EntityType="Self.vAvgPerMonth" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1213,6 +1238,7 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
         <EntityContainer Name="SchoolDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AnjomanOlyas" EntityType="SchoolDBModel.AnjomanOlya" />
           <EntitySet Name="Fathers" EntityType="SchoolDBModel.Father" />
+          <EntitySet Name="Fields" EntityType="SchoolDBModel.Field" />
           <EntitySet Name="Grades" EntityType="SchoolDBModel.Grade" />
           <EntitySet Name="JavabeTamrins" EntityType="SchoolDBModel.JavabeTamrin" />
           <EntitySet Name="Karmands" EntityType="SchoolDBModel.Karmand" />
@@ -1227,6 +1253,7 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <EntitySet Name="Sessoins" EntityType="SchoolDBModel.Sessoin" />
           <EntitySet Name="Students" EntityType="SchoolDBModel.Student" />
           <EntitySet Name="StuRegisters" EntityType="SchoolDBModel.StuRegister" />
+          <EntitySet Name="sysdiagrams" EntityType="SchoolDBModel.sysdiagram" />
           <EntitySet Name="Tamarins" EntityType="SchoolDBModel.Tamarin" />
           <EntitySet Name="vJavabeTamrins" EntityType="SchoolDBModel.vJavabeTamrin" />
           <EntitySet Name="vJTamrins" EntityType="SchoolDBModel.vJTamrin" />
@@ -1243,6 +1270,10 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <AssociationSet Name="FK_Students_Fathers" Association="SchoolDBModel.FK_Students_Fathers">
             <End Role="Father" EntitySet="Fathers" />
             <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StuRegister_Fields" Association="SchoolDBModel.FK_StuRegister_Fields">
+            <End Role="Field" EntitySet="Fields" />
+            <End Role="StuRegister" EntitySet="StuRegisters" />
           </AssociationSet>
           <AssociationSet Name="FK_LessonGroups_Grades" Association="SchoolDBModel.FK_LessonGroups_Grades">
             <End Role="Grade" EntitySet="Grades" />
@@ -1353,6 +1384,14 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Students" Relationship="SchoolDBModel.FK_Students_Fathers" FromRole="Father" ToRole="Student" />
         </EntityType>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="FieldID" />
+          </Key>
+          <Property Name="FieldID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StuRegisters" Relationship="SchoolDBModel.FK_StuRegister_Fields" FromRole="Field" ToRole="StuRegister" />
+        </EntityType>
         <EntityType Name="Grade">
           <Key>
             <PropertyRef Name="GradeID" />
@@ -1370,7 +1409,7 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <Property Name="JavabID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TamrinID" Type="Int32" />
           <Property Name="OzviatID" Type="Int32" />
-          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileData" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SendingTime" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="SendingDate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -1569,9 +1608,21 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <Property Name="RegGrade" Type="Int32" />
           <Property Name="EduYear" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FieldID" Type="Int32" />
+          <NavigationProperty Name="Field" Relationship="SchoolDBModel.FK_StuRegister_Fields" FromRole="StuRegister" ToRole="Field" />
           <NavigationProperty Name="Student" Relationship="SchoolDBModel.FK_StuRegister_Students" FromRole="StuRegister" ToRole="Student" />
           <Property Name="FieldID" Type="Int32" />
           <NavigationProperty Name="Field" Relationship="SchoolDBModel.FK_StuRegister_Fields" FromRole="StuRegister" ToRole="Field" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tamarin">
           <Key>
@@ -1583,6 +1634,7 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <Property Name="StartDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ExpirationDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fileData" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="JavabeTamrins" Relationship="SchoolDBModel.FK_JavabeTamrin_Tamarin" FromRole="Tamarin" ToRole="JavabeTamrin" />
           <NavigationProperty Name="LessonGroup" Relationship="SchoolDBModel.FK_Tamarin_LessonGroups" FromRole="Tamarin" ToRole="LessonGroup" />
         </EntityType>
@@ -1880,6 +1932,18 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="FatherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StuRegister_Fields">
+          <End Type="SchoolDBModel.Field" Role="Field" Multiplicity="0..1" />
+          <End Type="SchoolDBModel.StuRegister" Role="StuRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="FieldID" />
+            </Principal>
+            <Dependent Role="StuRegister">
+              <PropertyRef Name="FieldID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2189,6 +2253,14 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Fields">
+            <EntityTypeMapping TypeName="SchoolDBModel.Field">
+              <MappingFragment StoreEntitySet="Fields">
+                <ScalarProperty Name="FieldTitle" ColumnName="FieldTitle" />
+                <ScalarProperty Name="FieldID" ColumnName="FieldID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Grades">
             <EntityTypeMapping TypeName="SchoolDBModel.Grade">
               <MappingFragment StoreEntitySet="Grades">
@@ -2204,7 +2276,7 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
                 <ScalarProperty Name="SendingDate" ColumnName="SendingDate" />
                 <ScalarProperty Name="SendingTime" ColumnName="SendingTime" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="fileData" ColumnName="fileData" />
                 <ScalarProperty Name="OzviatID" ColumnName="OzviatID" />
                 <ScalarProperty Name="TamrinID" ColumnName="TamrinID" />
                 <ScalarProperty Name="JavabID" ColumnName="JavabID" />
@@ -2389,9 +2461,21 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SchoolDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tamarins">
             <EntityTypeMapping TypeName="SchoolDBModel.Tamarin">
               <MappingFragment StoreEntitySet="Tamarin">
+                <ScalarProperty Name="fileData" ColumnName="fileData" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />

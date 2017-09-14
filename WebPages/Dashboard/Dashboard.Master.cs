@@ -15,8 +15,10 @@ namespace WebPages.Dashboard
         {
             SchoolDBEntities db = new SchoolDBEntities();
 
+
             Student stuu = db.Students.Where(p => p.UserName == "mhmmd99").Single();
             imgSideProfile.Src = stuu.Image;
+
         }
     }
 }

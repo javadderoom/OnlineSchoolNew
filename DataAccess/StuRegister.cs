@@ -22,6 +22,7 @@ namespace DataAccess
         public string Class { get; set; }
         public Nullable<int> FieldID { get; set; }
     
+        public virtual Field Field { get; set; }
         public virtual Student Student { get; set; }
         public virtual Field Field { get; set; }
     }

@@ -25,6 +25,7 @@ namespace DataAccess
         public string StartDate { get; set; }
         public string ExpirationDate { get; set; }
         public string Description { get; set; }
+        public byte[] fileData { get; set; }
     
         public virtual ICollection<JavabeTamrin> JavabeTamrins { get; set; }
         public virtual LessonGroup LessonGroup { get; set; }

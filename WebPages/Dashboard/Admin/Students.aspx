@@ -11,6 +11,7 @@
     <script src="../JavaScript/custom.min.js"></script>
     <link href="../Styles/AdminPanelStyles.css" rel="stylesheet" />
     <link href="../font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="c-title">
@@ -19,6 +20,7 @@
             <asp:Literal runat="server" Text="<%$ Resources:Dashboard,students%>" /></h4>
     </div>
     <div class="x_content">
+
         <div class="row">
             <div class="col-md-4 hidden-xs">
 
@@ -37,6 +39,7 @@
             <div class="col-md-4 col-xs-12 text-righ">
                 <asp:Button ID="btnAddStudent" name="btnAdd" class="btn btn-primary" runat="server"
                     Text="<%$ Resources:Dashboard,add_student%>" OnClick="btnAddStudent_Click" />
+
             </div>
             <div class="col-md-4 col-xs-12 text-righ">
                 <div class="input-group">
@@ -54,10 +57,13 @@
                 </div>
             </div>
         </div>
+
         <div id="gridtoprint">
+
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <div id="ContentPlaceHolder1_upGrid">
                 <div>
+
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 
@@ -108,7 +114,7 @@
                     <asp:Literal runat="server" Text="<%$ Resources:Dashboard,ShowAll%>" />
                     <span class="fa fa-list"></span>
                 </button>
-                <input name="b_print" type="button" class="btn btn-primary" onclick="printdiv('gridtoprint');" value=" Print " />
+                <input name="b_print" type="button" class="btn btn-primary" onclick="printGrid('gridtoprint', 'ContentPlaceHolder1_gvStudents', 4);" value=" Print " />
             </div>
             <div class="extra" style="height: 100px">
             </div>
@@ -297,6 +303,7 @@
                                     <div class="col-xs-12 col-sm-8 col-sm-pull-4 text-right">
                                         <textarea name="ctl00$ContentPlaceHolder1$tbxAddress" rows="2" cols="20" runat="server" id="tbxAddress" class="form-control text-right dirRight"></textarea>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -306,33 +313,14 @@
                                     <button type="button" class="btn btn-default " data-dismiss="modal">
                                         <asp:Literal runat="server" Text="<%$ Resources:Dashboard,back%>" />
                                     </button>
-                                    <input name="b_print2" type="button" class="btn btn-primary" data-dismiss="modal" onclick="printdiv('divtoprint');" value=" Print " />
+                                    <input name="b_print2" type="button" class="btn btn-primary" data-dismiss="modal" onclick="printModal('divtoprint');" value=" Print " />
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-    <script>
-        function printdiv(printpage) {
 
-            var headstr = "<html><head><title></title></head><body>";
-            var footstr = "</body>";
-            var newstr = document.all.item(printpage).innerHTML;
-            var oldstr = document.body.innerHTML;
-            document.body.innerHTML = headstr + newstr + footstr;
-            window.print();
-            document.body.innerHTML = oldstr;
-            $('#modalShowDetails').modal('hide');
-            $('body').removeClass('modal-open');
-            $('.modal-backdrop').remove();
-            $('.fade').remove();
-
-            return false;
-        }
-
-
-    </script>
 </asp:Content>
