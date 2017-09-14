@@ -7,6 +7,7 @@ using Common;
 using System.Data;
 using System.Web.Configuration;
 using System.Configuration;
+using System.Data.SqlClient;
 
 namespace DataAccess.Repository
 {
@@ -344,5 +345,26 @@ namespace DataAccess.Repository
 
             return id;
         }
+
+        public DataTable getAllLessonGroupsOfCurrentYear()
+        {
+
+            string Command = string.Format("select class,LessonTitle,unit,GradeTitle,Day,Time,Year,FirstName + ' '+LastName as teacherFullName,LGID from LessonGroups left outer join Karmand on LessonGroups.TeacherCode = Karmand.PersonalCode left outer join Lessons on LessonGroups.LessonID = Lessons.LessonID left outer join Grades on LessonGroups.GradeID = Grades.GradeID where year =  (select top 1 EduYear from StuRegister order by EduYear desc)");
+            SqlConnection myConnection = new SqlConnection(vReportExamsRepository.conString);
+            SqlDataAdapter myDataAdapter = new SqlDataAdapter(Command, myConnection);
+            DataTable dtResult = new DataTable();
+            myDataAdapter.Fill(dtResult);
+            return dtResult;
+        }
+        public DataTable getStudentLessonGroups(int stuID)
+        {
+            string Command = string.Format("select *,FirstName+' '+LastName as teacherFullname from Ozviat inner join LessonGroups on Ozviat.LGID = LessonGroups.LGID inner join Karmand on LessonGroups.TeacherCode = Karmand.PersonalCode inner join Lessons on LessonGroups.LessonID = Lessons.LessonID where StudentCode = {0} and Year = (select top 1 year from LessonGroups order by Year desc)", stuID);
+            SqlConnection myConnection = new SqlConnection(vReportExamsRepository.conString);
+            SqlDataAdapter myDataAdapter = new SqlDataAdapter(Command, myConnection);
+            DataTable dtResult = new DataTable();
+            myDataAdapter.Fill(dtResult);
+            return dtResult;
+        }
+
     }
 }

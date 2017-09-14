@@ -55,8 +55,8 @@
                                 <asp:BoundField DataField="Class" HeaderText="<%$ Resources:Dashboard,Class%>" />
                                 <asp:BoundField DataField="LessonTitle" HeaderText="<%$ Resources:Dashboard,LessonTitle%>" />
                                 <asp:BoundField DataField="Unit" HeaderText="<%$ Resources:Dashboard,Unit%>" />
-                                <asp:BoundField DataField="FirstName" HeaderText="<%$ Resources:Dashboard,TeacherFName%>" />
-                                <asp:BoundField DataField="LastName" HeaderText="<%$ Resources:Dashboard,TeacherLName%>" />
+                                <asp:BoundField DataField="teacherFullName" HeaderText="<%$ Resources:Dashboard,TeacherFName%>" />
+
                                 <asp:BoundField DataField="GradeTitle" HeaderText="<%$ Resources:Dashboard,GradeTitle%>" />
                                 <asp:BoundField DataField="Day" HeaderText="<%$ Resources:Dashboard,Day%>" />
                                 <asp:BoundField DataField="Time" HeaderText="<%$ Resources:Dashboard,Time%>" />

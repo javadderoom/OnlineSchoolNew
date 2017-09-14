@@ -4,15 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="15276812d25644c9bb7065118a1a0d57" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="SchoolDBModel.AnjomanOlya" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SchoolDBModel.Father" Width="1.5" PointX="0.75" PointY="17.125" />
-        <EntityTypeShape EntityType="SchoolDBModel.Grade" Width="1.5" PointX="0.75" PointY="13.75" />
-        <EntityTypeShape EntityType="SchoolDBModel.JavabeTamrin" Width="1.5" PointX="10.5" PointY="13.25" />
-        <EntityTypeShape EntityType="SchoolDBModel.Karmand" Width="1.5" PointX="3.75" PointY="3.625" />
-        <EntityTypeShape EntityType="SchoolDBModel.LessonGroup" Width="1.5" PointX="6" PointY="12.75" />
-        <EntityTypeShape EntityType="SchoolDBModel.Lesson" Width="1.5" PointX="3.75" PointY="22" />
+
+      <Diagram DiagramId="3efd528941174d59a8a35e422e354bdf" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="SchoolDBModel.AnjomanOlya" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolDBModel.Father" Width="1.5" PointX="0.75" PointY="17.25" />
+        <EntityTypeShape EntityType="SchoolDBModel.Field" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="SchoolDBModel.Grade" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="SchoolDBModel.JavabeTamrin" Width="1.5" PointX="10.5" PointY="13.375" />
+        <EntityTypeShape EntityType="SchoolDBModel.Karmand" Width="1.5" PointX="3.75" PointY="22.25" />
+        <EntityTypeShape EntityType="SchoolDBModel.LessonGroup" Width="1.5" PointX="6" PointY="12.875" />
+        <EntityTypeShape EntityType="SchoolDBModel.Lesson" Width="1.5" PointX="3.75" PointY="5.75" />
         <EntityTypeShape EntityType="SchoolDBModel.Mother" Width="1.5" PointX="0.75" PointY="9.25" />
+
         <EntityTypeShape EntityType="SchoolDBModel.Nomarat" Width="1.5" PointX="10.5" PointY="17.625" />
         <EntityTypeShape EntityType="SchoolDBModel.Ozviat" Width="1.5" PointX="8.25" PointY="11.375" />
         <EntityTypeShape EntityType="SchoolDBModel.PaymentHistory" Width="1.5" PointX="5.25" PointY="8.875" />
@@ -34,7 +37,9 @@
         <EntityTypeShape EntityType="SchoolDBModel.vStudent" Width="1.5" PointX="15.75" PointY="6.75" />
         <EntityTypeShape EntityType="SchoolDBModel.vStudentsInfo" Width="1.5" PointX="16.75" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolDBModel.vTamrin" Width="1.5" PointX="17.75" PointY="3.75" />
+
         <AssociationConnector Association="SchoolDBModel.FK_Students_Fathers" />
+        <AssociationConnector Association="SchoolDBModel.FK_StuRegister_Fields" />
         <AssociationConnector Association="SchoolDBModel.FK_LessonGroups_Grades" />
         <AssociationConnector Association="SchoolDBModel.FK_Students_Grades" />
         <AssociationConnector Association="SchoolDBModel.FK_JavabeTamrin_Ozviat" />

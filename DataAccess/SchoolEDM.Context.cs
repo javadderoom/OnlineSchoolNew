@@ -27,6 +27,7 @@ namespace DataAccess
     
         public DbSet<AnjomanOlya> AnjomanOlyas { get; set; }
         public DbSet<Father> Fathers { get; set; }
+        public DbSet<Field> Fields { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<JavabeTamrin> JavabeTamrins { get; set; }
         public DbSet<Karmand> Karmands { get; set; }
@@ -41,6 +42,7 @@ namespace DataAccess
         public DbSet<Sessoin> Sessoins { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<StuRegister> StuRegisters { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Tamarin> Tamarins { get; set; }
         public DbSet<vJavabeTamrin> vJavabeTamrins { get; set; }
         public DbSet<vJTamrin> vJTamrins { get; set; }
