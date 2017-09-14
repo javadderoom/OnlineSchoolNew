@@ -8,7 +8,7 @@ namespace WebPages.Controllers
 {
     public partial class ClassChartt : System.Web.UI.UserControl
     {
-        public int myIntProperty { get; set; }
+        public int lgid { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,8 +20,8 @@ namespace WebPages.Controllers
             List<string> studentsList = new List<string>();
             List<string> studentsNames = new List<string>();
             // string year = lgr.GetLastestYear();
-            studentsList = lgr.GetStudentCodeOfLessonGroup(41);
-            studentsNames = lgr.GetStudentNameOfLessonGroup(41);
+            studentsList = lgr.GetStudentCodeOfLessonGroup(lgid);
+            studentsNames = lgr.GetStudentNameOfLessonGroup(lgid);
             int studentCount = studentsList.Count;
 
             List<string> s = new List<string>() { "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند", "فروردین", "اردیبهشت", "خرداد" };

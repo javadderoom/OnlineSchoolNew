@@ -12,19 +12,20 @@ namespace WebPages.Dashboard.Admin
 {
     public partial class reportsLessonGroupsChart : System.Web.UI.Page
     {
+        private string id = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            id = Request.QueryString["LGID"];
             if (!Page.IsPostBack)
             {
                 setGridView();
                 setLabel();
-
             }
         }
 
         private void setGridView()
         {
-            string id = Request.QueryString["LGID"];
             vReportExamsRepository vre = new vReportExamsRepository();
             gvStudents.DataSource = vre.topStudentsAverageByLGID(id.ToInt());
             gvStudents.DataBind();
@@ -32,7 +33,6 @@ namespace WebPages.Dashboard.Admin
 
         public void setLabel()
         {
-
             vReportExamsRepository v = new vReportExamsRepository();
             string id = Request.QueryString["LGID"];
             lblmianginkatbi.InnerText = Convert.ToDouble(v.getAverageLessonGroup(id.ToInt(), 0)).ToString();
@@ -68,7 +68,11 @@ namespace WebPages.Dashboard.Admin
 
         protected void gvStudents_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+        }
 
+        protected void btnChart_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("http://localhost:4911/Dashboard/Admin/ClassChart.aspx?LGID=" + id);
         }
     }
 }

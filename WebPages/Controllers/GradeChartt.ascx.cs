@@ -7,7 +7,7 @@ namespace WebPages.Controllers
 {
     public partial class GradeChartt : System.Web.UI.UserControl
     {
-        public int myIntProperty { get; set; }
+        public int grade { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +20,7 @@ namespace WebPages.Controllers
             ////////////////////// لیست کلاس ها//////////////
             List<string> classes = new List<string>();
             string year = lgr.GetLastestYear();
-            classes = lgr.GetClassesOfGrade(myIntProperty, year);
+            classes = lgr.GetClassesOfGrade(grade, year);
             ///////////////////////// تعداد کلاس ////////////
             int classCount = classes.Count;
             /////////////////ماه ها //////////////////

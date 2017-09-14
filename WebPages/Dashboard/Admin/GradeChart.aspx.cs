@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebPages.Dashboard.Controllers;
+using Common;
 
 namespace WebPages.Dashboard.Admin
 {
@@ -12,7 +13,8 @@ namespace WebPages.Dashboard.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GradeChartt.myIntProperty = 6;
+            string id = Request.QueryString["GradeID"];
+            GradeChartt.grade = id.ToInt();
         }
     }
 }

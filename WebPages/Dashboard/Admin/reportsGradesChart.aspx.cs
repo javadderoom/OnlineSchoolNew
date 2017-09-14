@@ -67,7 +67,7 @@ namespace WebPages.Dashboard.Admin
 
         protected void btnViewAll_ServerClick(object sender, EventArgs e)
         {
-            Response.Redirect("http://localhost:4911/Dashboard/Admin/GradeChart.aspx");
+            Response.Redirect("http://localhost:4911/Dashboard/Admin/GradeChart.aspx?GradeID=" + id);
         }
     }
 }

@@ -85,13 +85,11 @@
                 <br />
                 <span runat="server" id="lblShafahiExamCount" class="control-label formLabel" style="color: #0066CC; font-size: 100%; font-weight: bold;"></span>
             </div>
-
         </div>
     </div>
     <div class="ln_solid"></div>
     <div class="form-group">
         <div class="row">
-
 
             <div class="col-xs-12 col-sm-3  text-right dirRight goRight" style="float: right">
                 <span id="ContentPlaceHolder1_Label3" class="control-label formLabel" style="color: #666666; font-size: 100%; font-weight: bold;">
@@ -154,9 +152,6 @@
 
                             <asp:CheckBox ID="GVchk" runat="server" AutoPostBack="false" OnCheckedChanged="GVchk_CheckedChanged" />--%>
                         </ItemTemplate>
-
-
-
                     </asp:TemplateField>
                 </Columns>
 
@@ -173,7 +168,7 @@
     </asp:UpdatePanel>
     <div class="row">
         <div class="col-md-5 col-md-push-7 col-xs-6 col-xs-push-6" style="margin: auto">
-            <button type="button" id="btnViewAll" class="btn btn-auto-h btn-info goRight" runat="server" style="margin-right: 5px;">
+            <button type="button" id="btnChart" onserverclick="btnChart_ServerClick" class="btn btn-auto-h btn-info goRight" runat="server" style="margin-right: 5px;">
                 <asp:Literal runat="server" Text="گزارشات نموداری" />
                 <span class="fa fa-list"></span>
             </button>

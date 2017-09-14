@@ -24,25 +24,23 @@ namespace WebPages.Dashboard.Admin
             GradesRepository gr = new GradesRepository();
             gvGrades.DataSource = gr.getAllGrades();
             gvGrades.DataBind();
-
-
-
         }
 
         protected void gvGrades_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
         }
 
         protected void gvGrades_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int index = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "Details")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
 
-            GridViewRow row = gvGrades.Rows[index];
+                GridViewRow row = gvGrades.Rows[index];
 
-            string id = row.Cells[0].Text;
-            Response.Redirect("http://localhost:4911/Dashboard/Admin/reportsGradesChart.aspx?GradeID=" + row.Cells[0].Text);
-
+                string id = row.Cells[0].Text;
+                Response.Redirect("http://localhost:4911/Dashboard/Admin/reportsGradesChart.aspx?GradeID=" + row.Cells[0].Text);
+            }
         }
     }
 }
