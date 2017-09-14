@@ -11,14 +11,17 @@ namespace WebPages.Dashboard.Admin
 {
     public partial class reportsGradesChart : System.Web.UI.Page
     {
-        string id = "";
+        private string id = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             id = Request.QueryString["GradeID"];
             if (!IsPostBack)
             {
+
                 setLabels();
                 setGrid();
+
 
             }
         }
@@ -46,12 +49,16 @@ namespace WebPages.Dashboard.Admin
 
         protected void gvClasses_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
         }
 
         protected void gozareshNemoodari_ServerClick(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnViewAll_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("http://localhost:4911/Dashboard/Admin/GradeChart.aspx");
         }
     }
 }

@@ -23,27 +23,15 @@
     <div class="x_content">
         <div class="row">
             <div class="col-md-4 col-xs-12 hidden-xs">
-                <label style="padding-top: 5px;">
-                    نمایش
-                                <select name="ctl00$ContentPlaceHolder1$ddlPageSize" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ddlPageSize\',\'\')', 0)" id="ContentPlaceHolder1_ddlPageSize" style="font-weight: normal;">
-                                    <option selected="selected" value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="75">75</option>
-                                    <option value="100">100</option>
-                                </select>
-                    رکورد
-                </label>
             </div>
             <div class="col-xs-12 col-sm-4  text-right dirRight goLeft">
             </div>
-            <div class="col-xs-12 col-sm-4  text-right dirRight goLeft">
+            <div class="col-xs-12 col-sm-4  text-right dirRight " style="float: right;">
                 <span id="ContentPlaceHolder1_Label3" class="control-label formLabel" style="color: #666666; font-size: 100%; font-weight: bold;">
                     <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Year%>" /></span>
                 <span class="fa fa-arrow-circle-down"></span>
                 <br />
                 <span id="lblYear" runat="server" class="control-label formLabel" style="color: #0066CC; font-size: 100%; font-weight: bold;"></span>
-                <asp:DropDownList ID="ddlYear" runat="server"></asp:DropDownList>
             </div>
             <%-- <div class="col-md-4 col-xs-12 text-righ">
                 <asp:Button ID="btnAdd" name="btnAdd" class="btn btn-primary" runat="server"
@@ -65,7 +53,7 @@
             </div>--%>
         </div>
         <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
-
+        <div class="ln_solid" style="line-height: 30px;"></div>
         <div id="ContentPlaceHolder1_upGrid">
             <div>
                 <%-- <asp:UpdatePanel ID="UpdatePanel1" runat="server">--%>

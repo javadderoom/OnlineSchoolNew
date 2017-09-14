@@ -21,6 +21,40 @@ namespace DataAccess.Repository
         }
 
 
+        public int OzviatIDByLGIDAndStudentCode(int id, string stuCode)
+        {
+            int result = 0;
+            result = db.Ozviats.Where(p => p.LGID == id).Where(p => p.StudentCode == stuCode)
+                .Select(p => p.OzviatID).FirstOrDefault();
+
+            return result;
+        }
+
+        //public List<int> GetOzviatListByStudentCode(string stu)
+        //{
+        //    List<int> result = new List<int>();
+        //    SchoolDBEntities sd = conn.GetContext();
+        //    IEnumerable<int> ie =
+        //        from r in sd.oz
+        //    return result;
+        //}
+        public DataTable FindByLGID(int lgid)
+        {
+            List<vOzviat> result = new List<vOzviat>();
+
+            SchoolDBEntities sd = conn.GetContext();
+
+            IEnumerable<vOzviat> pl =
+                from r in sd.vOzviats
+                where r.LGID == lgid
+
+                select r;
+
+            result = pl.ToList();
+            return OnlineTools.ToDataTable(result);
+        }
+
+
 
 
 

@@ -10,7 +10,7 @@ namespace WebPages.Dashboard.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Karmand stu = kr.FindByUserName("karim");
+            Karmand stu = kr.FindByUserName("moosa");
 
             lblID.InnerText = stu.EID.ToString();
             lblPersonalCode.InnerText = stu.PersonalCode.ToString();
@@ -21,7 +21,6 @@ namespace WebPages.Dashboard.Admin
 
             lblFixTel.InnerText = stu.PhoneNumber;
             lblMobile.InnerText = stu.Mobile;
-            lblEmail.InnerText = stu.Email;
             lblEmail.InnerText = stu.Email;
 
             imgUserPic.Src = stu.Image;

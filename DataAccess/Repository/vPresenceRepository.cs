@@ -22,7 +22,7 @@ namespace DataAccess.Repository
             bool? result = true;
             SchoolDBEntities sd = conn.GetContext();
             result = (from r in sd.Presences
-                      where r.SessionID == id && r.OzviatID == oid
+                      where (r.SessionID == id) && (r.OzviatID == oid)
 
                       select r.Status).FirstOrDefault();
 

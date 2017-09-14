@@ -35,28 +35,40 @@ namespace DataAccess.Repository
             return result;
         }
 
-        public List<int?> GetListOfDay(int id)
+        public List<int?> GetListOfDay(string id)
         {
             SchoolDBEntities sd = conn.GetContext();
 
             IEnumerable<int?> pl =
                 from r in sd.vbarnameHaftegis
-                where r.OzviatID == id
+                where r.StudentCode == id
                 select r.Day;
 
             return pl.ToList();
         }
 
-        public List<int?> GetListOfTime(int id)
+        public List<int?> GetListOfTime(string id)
         {
             SchoolDBEntities sd = conn.GetContext();
 
             IEnumerable<int?> pl =
-                from r in sd.vbarnameHaftegis
-                where r.OzviatID == id
-                select r.Time;
+            from r in sd.vbarnameHaftegis
+            where r.StudentCode == id
+            select r.Time;
 
             return pl.ToList();
+        }
+
+        public string GetYear(string id)
+        {
+            SchoolDBEntities sd = conn.GetContext();
+
+            string pl =
+            (from r in sd.vbarnameHaftegis
+             where r.StudentCode == id
+             select r.Year).Take(1).FirstOrDefault();
+
+            return pl;
         }
 
         public List<string> GetTeacher(int lgid)
@@ -114,7 +126,7 @@ namespace DataAccess.Repository
             return db.vbarnameHaftegis.Where(p => p.OzviatID == id).Single();
         }
 
-        public DataTable FindByOzviat(int ozviat)
+        public DataTable FindByOzviat(string ozviat)
         {
             List<vbarnameHaftegi> result = new List<vbarnameHaftegi>();
 
@@ -122,7 +134,7 @@ namespace DataAccess.Repository
 
             IEnumerable<vbarnameHaftegi> pl =
                 from r in sd.vbarnameHaftegis
-                where r.OzviatID == ozviat
+                where r.StudentCode == ozviat
 
                 select r;
 

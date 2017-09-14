@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebPages.Dashboard {
+namespace WebPages.Dashboard.Admin {
     
     
-    public partial class WeeklySchedule {
+    public partial class ClassChart {
         
         /// <summary>
-        /// lblYear control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblYear;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// gvSchedule control.
+        /// ClassChartt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSchedule;
+        protected global::WebPages.Controllers.ClassChartt ClassChartt;
     }
 }

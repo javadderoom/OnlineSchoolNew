@@ -68,6 +68,89 @@ namespace DataAccess.Repository
             return pl.ToList();
         }
 
+        public List<int> GetClassesOfTeacherInYear(string id, string year)
+        {
+            SchoolDBEntities sd = conn.GetContext();
+
+            IEnumerable<int> pl =
+                from r in sd.LessonGroups
+                where r.TeacherCode == id && r.Year == year
+
+                select r.LGID;
+
+            return pl.ToList();
+        }
+
+        public List<string> GetClassesOfGrade(int grade, string year)
+        {
+            List<string> result = new List<string>();
+
+            SchoolDBEntities sd = conn.GetContext();
+
+            IQueryable<string> pl =
+                from r in sd.LessonGroups
+                where r.GradeID == grade && r.Year == year
+                select r.Class;
+
+            result = pl.ToList();
+            return result;
+        }
+
+        public List<int> GetstudentsOfClass(string clas, string year)
+        {
+            List<int> result = new List<int>();
+
+            SchoolDBEntities sd = conn.GetContext();
+
+            IQueryable<int> pl =
+                from r in sd.LessonGroups
+                where r.Class == clas && r.Year == year
+                select r.LGID;
+
+            result = pl.ToList();
+            return result;
+        }
+
+        public string GetLastestYear()
+        {
+            SchoolDBEntities sd = conn.GetContext();
+
+            string pl =
+                (from r in sd.vLessonGroups
+
+                 orderby r.Year descending
+                 select r.Year).Take(1).FirstOrDefault();
+
+            return pl;
+        }
+
+        public List<string> GetStudentCodeOfLessonGroup(int lgid)
+        {
+            List<string> result = new List<string>();
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<string> pl =
+                from r in sd.Ozviats
+
+                where r.LGID == lgid
+                select r.StudentCode;
+            result = pl.ToList();
+            return result;
+        }
+
+        public List<string> GetStudentNameOfLessonGroup(int lgid)
+        {
+            List<string> result = new List<string>();
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<string> pl =
+               from r in sd.Ozviats
+               join o in sd.Students
+               on r.StudentCode equals o.StudentCode
+               where r.LGID == lgid
+               select o.FirstName + " " + o.LastName;
+            result = pl.ToList();
+            return result;
+        }
+
         public List<string> GetlistOfAllYears()
         {
             List<string> result = new List<string>();
@@ -282,5 +365,6 @@ namespace DataAccess.Repository
             myDataAdapter.Fill(dtResult);
             return dtResult;
         }
+
     }
 }

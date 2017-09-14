@@ -396,4 +396,7 @@
   <data name="Score" xml:space="preserve">
     <value>نمره</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>توضیحات</value>
+  </data>
 </root>

@@ -24,7 +24,7 @@ namespace WebPages.Dashboard.Admin
             {
                 SchoolDBEntities db = new SchoolDBEntities();
 
-                Karmand stuu = db.Karmands.Where(p => p.UserName == "karim").Single();
+                Karmand stuu = db.Karmands.Where(p => p.UserName == "moosa").Single();
                 imgUserPic.Src = stuu.Image;
             }
         }
@@ -43,7 +43,7 @@ namespace WebPages.Dashboard.Admin
 
                 SchoolDBEntities db = new SchoolDBEntities();
 
-                Karmand stuu = db.Karmands.Where(p => p.UserName == "karim").Single();
+                Karmand stuu = db.Karmands.Where(p => p.UserName == "moosa").Single();
 
                 stuu.Image = "/Dashboard/Images/" + strname;
                 db.SaveChanges();

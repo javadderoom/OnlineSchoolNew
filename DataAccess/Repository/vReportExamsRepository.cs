@@ -57,44 +57,20 @@ namespace DataAccess.Repository
 
         public int ExamCountByLGID(int id, int katbiOrShafahi)
         {
-
             var v = db.vReportExams.Where(p => p.LGID == id).Where(p => p.ExamType == katbiOrShafahi).Select(p => p.SessionID);
             //v = from r in db.vReportExams where r.LGID == id && r.ExamType == katbiOrShafahi select 
             List<int?> l = v.ToList();
             return l.Distinct().Count();
         }
+
         public DataTable topStudentsAverageByLGID(int id)
         {
-            //var query =
-            //(from r in db.vReportExams
-            // where r.LGID == id
-            // group r.Nomre by new
-            // {
-            //     r.StudentCode
-            // } into gs
-            // orderby gs.Average() descending
-            // select new
-            // {
-            //     stuCode = gs.Key.StudentCode,
-            //     avg = gs.Average(),
-            // }
-
-            //    ).Take(3);
-
-            //return OnlineTools.ToDataTable(query.ToList());
-
-            //var query =
-            //    db.Database.SqlQuery<vReportExam>
-            //    (string.Format("select tbl.StudentCode , Students.FirstName + ' ' +Students.LastName as fullName,avgNomre from (select StudentCode, avg(Nomre) as avgNomre from vReportExams where LGID = {0} group by StudentCode) tbl inner join Students on tbl.StudentCode = Students.StudentCode"), id);
-            //return OnlineTools.ToDataTable(query.ToList());
-
             string Command = (string.Format("select tbl.StudentCode , Students.FirstName + ' ' + Students.LastName as FullName,avgNomre,countJavabeTamrin from (select Students.StudentCode, isnull(avg(cast(nomre as decimal)), 0) as avgNomre, count(distinct tamrinid) countJavabeTamrin from Students left outer join Ozviat on Students.StudentCode = Ozviat.StudentCode left outer join Nomarat on Ozviat.OzviatID = Nomarat.OzviatID left outer join JavabeTamrin on Ozviat.OzviatID = JavabeTamrin.OzviatID where LGID = {0} group by Students.StudentCode )tbl inner join Students on tbl.StudentCode = Students.StudentCode order by avgNomre desc", id));
 
             SqlConnection myConnection = new SqlConnection(conString);
             SqlDataAdapter myDataAdapter = new SqlDataAdapter(Command, myConnection);
             DataTable dtResult = new DataTable();
             myDataAdapter.Fill(dtResult);
-
 
             return dtResult;
         }
@@ -123,6 +99,68 @@ namespace DataAccess.Repository
             myDataAdapter.Fill(dtResult);
             return dtResult;
         }
+
+        #region chart
+
+        public List<decimal?> GetAvgOfClassPerMonth(string cls)
+        {
+            List<decimal?> result = new List<decimal?>();
+
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<decimal?> pl =
+                from r in sd.vAvgPerMonths
+                where r.Class == cls
+                orderby r.ID
+                select r.miangin;
+
+            result = pl.ToList();
+            return result;
+        }
+
+        public List<decimal?> GetAvgOfStudentPerMonth(string stu)
+        {
+            List<decimal?> result = new List<decimal?>();
+
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<decimal?> pl =
+                from r in sd.vAvgStudentPerMonths
+                where r.StudentCode == stu
+                orderby r.ID
+                select r.AvgNomre;
+
+            result = pl.ToList();
+            return result;
+        }
+
+        public List<string> GetClassMonthForChart(string cls)
+        {
+            List<string> result = new List<string>();
+
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<string> pl =
+                from r in sd.vAvgPerMonths
+                where r.Class == cls
+                orderby r.ID
+                select r.mnth;
+            result = pl.ToList();
+            return result;
+        }
+
+        public List<string> GetStudentMonthForChart(string stu)
+        {
+            List<string> result = new List<string>();
+
+            SchoolDBEntities sd = conn.GetContext();
+            IQueryable<string> pl =
+                from r in sd.vAvgStudentPerMonths
+                where r.StudentCode == stu
+                orderby r.ID
+                select r.mnth;
+            result = pl.ToList();
+            return result;
+        }
+
+        #endregion chart
 
         public List<decimal?> getStudentNomreByStuCode(string id, int examType, int lgid)
         {

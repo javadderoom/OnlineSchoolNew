@@ -125,7 +125,7 @@
                                                 </div>
                                             </ItemTemplate>
                                             <HeaderTemplate>
-                                                <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,Description%>" />
+                                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Description%>" />
                                             </HeaderTemplate>
                                         </asp:TemplateField>
                                     </Columns>

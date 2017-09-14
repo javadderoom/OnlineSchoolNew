@@ -51,8 +51,11 @@ namespace WebPages.Dashboard.Teacher
                         int ozvID = row.Cells[0].Text.ToInt();
                         row.Cells[4].Text = nr.GetNomreBySessionIDandOzviatID(id, ozvID);
                         row.Cells[5].Text = ((bool)(pr.GetPreseceBySessionIDandOzviatID(id, ozvID))).ToString();
-                        row.Cells[6].Text = ((bool)(pr.GetisMovajjahBySessionIDandOzviatID(id, ozvID))).ToString();
-                        row.Cells[7].Text = pr.GetDescriptionBySessionIDandOzviatID(id, ozvID);
+                        if (pr.GetPreseceBySessionIDandOzviatID(id, ozvID) == false)
+                        {
+                            row.Cells[6].Text = ((bool)(pr.GetisMovajjahBySessionIDandOzviatID(id, ozvID))).ToString();
+                            row.Cells[7].Text = pr.GetDescriptionBySessionIDandOzviatID(id, ozvID);
+                        }
                     }
                 }
                 else

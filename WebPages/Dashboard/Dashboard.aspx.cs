@@ -16,7 +16,7 @@ namespace WebPages.Dashboard
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            vStudent stu = sr.GetStudentByUsername("javad");
+            vStudent stu = sr.GetStudentByUsername("mhmmd99");
 
             lblStuID.InnerText = stu.StuID.ToString();
             lblStudentCode.InnerText = stu.StudentCode.ToString();

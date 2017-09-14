@@ -90,6 +90,9 @@
     <Compile Include="LessonGroup.cs">
       <DependentUpon>SchoolEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Month.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Mother.cs">
       <DependentUpon>SchoolEDM.tt</DependentUpon>
     </Compile>
@@ -159,6 +162,12 @@
       <DependentUpon>SchoolEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Tamarin.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vAvgPerMonth.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vAvgStudentPerMonth.cs">
       <DependentUpon>SchoolEDM.tt</DependentUpon>
     </Compile>
     <Compile Include="vbarnameHaftegi.cs">

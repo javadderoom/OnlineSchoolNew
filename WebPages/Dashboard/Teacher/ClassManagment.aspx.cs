@@ -14,7 +14,7 @@ namespace WebPages.Dashboard.Teacher
         public void gvLoad()
         {
             vLessonGroupRepository vRep = new vLessonGroupRepository();
-            List<int> ClassesOfTeacherList = vRep.GetClassesOfTeacher("11111");
+            List<int> ClassesOfTeacherList = vRep.GetClassesOfTeacherInYear("11111", "93-94");
 
             gvClasses.DataSource = vRep.GetLessonGroupsByLGIDList(ClassesOfTeacherList);
             gvClasses.DataBind();
@@ -77,7 +77,7 @@ namespace WebPages.Dashboard.Teacher
                 // from the Rows collection.
                 GridViewRow row = gvClasses.Rows[index];
                 Session.Add("LGIDforStudentsFromClassManagment", row.Cells[0].Text);
-                Session.Timeout = 60;
+                Session.Timeout = 1;
                 Response.Redirect("http://localhost:4911/Dashboard/Teacher/ClassStudents.aspx");
             }
             if (e.CommandName == "SessionHistory")
@@ -91,7 +91,7 @@ namespace WebPages.Dashboard.Teacher
                 GridViewRow row = gvClasses.Rows[index];
 
                 Session.Add("LGIDforSessionHistory", row.Cells[0].Text);
-                Session.Timeout = 60;
+                Session.Timeout = 1;
                 Response.Redirect("http://localhost:4911/Dashboard/Teacher/SessionHistory.aspx");
             }
             if (e.CommandName == "NewSession")
@@ -104,7 +104,7 @@ namespace WebPages.Dashboard.Teacher
                 // from the Rows collection.
                 GridViewRow row = gvClasses.Rows[index];
                 Session.Add("LGIDforNewSession", row.Cells[0].Text);
-                Session.Timeout = 60;
+                Session.Timeout = 1;
                 Response.Redirect("http://localhost:4911/Dashboard/Teacher/NewSession.aspx");
             }
         }

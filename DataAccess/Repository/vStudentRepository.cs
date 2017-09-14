@@ -23,7 +23,7 @@ namespace DataAccess.Repository
 
         public vStudent GetStudentByUsername(string user)
         {
-            vStudent stu = db.vStudents.Where(p => p.UserName == "javad").Single();
+            vStudent stu = db.vStudents.Where(p => p.UserName == user).Single();
             return stu;
         }
 
@@ -82,17 +82,15 @@ namespace DataAccess.Repository
             lvs = pl.ToList();
             return OnlineTools.ToDataTable(lvs);
         }
+
         public DataTable searchStudentsInfo(string searchtxt)
         {
-
-
             string Command = (string.Format(" select* from vStudentsInfo v where v.StudentCode like N'%{0}%' or v.stuClass like N'%{1}%' or v.GradeTitle like N'%{2}%' or v.fullName like N'%{3}%' or v.FirstName like N'%{4}%'", searchtxt, searchtxt, searchtxt, searchtxt, searchtxt));
 
             SqlConnection myConnection = new SqlConnection(vReportExamsRepository.conString);
             SqlDataAdapter myDataAdapter = new SqlDataAdapter(Command, myConnection);
             DataTable dtResult = new DataTable();
             myDataAdapter.Fill(dtResult);
-
 
             return dtResult;
         }
@@ -308,6 +306,7 @@ namespace DataAccess.Repository
                 }
             }
         }
+
         public DataTable getStudentsInfo()
         {
             string Command = (string.Format("select s.StudentCode,s.FirstName + ' ' + s.LastName as fullName,Fathers.FirstName,s.CGrade, (select top 1 class from Students inner join Ozviat on Students.StudentCode = Ozviat.StudentCode inner join LessonGroups on Ozviat.LGID = LessonGroups.LGID where Students.StudentCode = s.StudentCode order by LessonGroups.LGID desc) as stuClass from Students s left outer join Fathers on s.FatherID = Fathers.FatherID inner join StuRegister on s.StudentCode = StuRegister.StuCode where StuRegister.EduYear = (select top 1 EduYear from StuRegister order by EduYear desc)"));
@@ -316,7 +315,6 @@ namespace DataAccess.Repository
             SqlDataAdapter myDataAdapter = new SqlDataAdapter(Command, myConnection);
             DataTable dtResult = new DataTable();
             myDataAdapter.Fill(dtResult);
-
 
             return dtResult;
         }

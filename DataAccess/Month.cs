@@ -12,18 +12,10 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class StuRegister
+    public partial class Month
     {
-        public int RegID { get; set; }
-        public string StuCode { get; set; }
-        public string RegDate { get; set; }
-        public Nullable<int> RegGrade { get; set; }
-        public string EduYear { get; set; }
-        public string Class { get; set; }
-        public Nullable<int> FieldID { get; set; }
-    
-        public virtual Field Field { get; set; }
-        public virtual Student Student { get; set; }
-        public virtual Field Field { get; set; }
+        public int ID { get; set; }
+        public string Title { get; set; }
+        public string adad { get; set; }
     }
 }

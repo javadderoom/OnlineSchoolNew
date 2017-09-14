@@ -102,6 +102,14 @@
           <Property Name="LessonTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="Unit" Type="int" />
         </EntityType>
+        <EntityType Name="Months">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="adad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Mothers">
           <Key>
             <PropertyRef Name="NationalCode" />
@@ -227,6 +235,7 @@
           <Property Name="EduYear" Type="nvarchar" MaxLength="5" />
           <Property Name="Class" Type="nvarchar" MaxLength="50" />
           <Property Name="FieldID" Type="int" />
+
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -237,6 +246,7 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+
         </EntityType>
         <EntityType Name="Tamarin">
           <Key>
@@ -251,6 +261,7 @@
           <Property Name="fileData" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
+
 warning 6013: The table/view 'SchoolDB.dbo.vBarname' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="vBarname">
           <Property Name="Class" Type="nvarchar" MaxLength="50" />
@@ -259,6 +270,31 @@ warning 6013: The table/view 'SchoolDB.dbo.vBarname' does not have a primary key
           <Property Name="StudentCode" Type="nvarchar" MaxLength="10" />
           <Property Name="LessonTitle" Type="nvarchar" MaxLength="50" />
         </EntityType>-->
+
+warning 6002: The table/view 'SchoolDB.dbo.vAvgPerMonth' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vAvgPerMonth">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="mth" Type="nvarchar" MaxLength="2" />
+          <Property Name="miangin" Type="decimal" Precision="38" Scale="6" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="mnth" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SchoolDB.dbo.vAvgStudentPerMonth' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vAvgStudentPerMonth">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="StudentCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="mnth" Type="nvarchar" MaxLength="2" />
+          <Property Name="AvgNomre" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SchoolDB.dbo.vbarnameHaftegi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vbarnameHaftegi">
@@ -823,6 +859,7 @@ warning 6002: The table/view 'SchoolDB.dbo.vTamrin' does not have a primary key 
           <EntitySet Name="Karmand" EntityType="Self.Karmand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LessonGroups" EntityType="Self.LessonGroups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lessons" EntityType="Self.Lessons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Months" EntityType="Self.Months" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mothers" EntityType="Self.Mothers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nomarat" EntityType="Self.Nomarat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ozviat" EntityType="Self.Ozviat" Schema="dbo" store:Type="Tables" />
@@ -834,6 +871,24 @@ warning 6002: The table/view 'SchoolDB.dbo.vTamrin' does not have a primary key 
           <EntitySet Name="StuRegister" EntityType="Self.StuRegister" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tamarin" EntityType="Self.Tamarin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vAvgPerMonth" EntityType="Self.vAvgPerMonth" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vAvgPerMonth].[Class] AS [Class], 
+[vAvgPerMonth].[mth] AS [mth], 
+[vAvgPerMonth].[miangin] AS [miangin], 
+[vAvgPerMonth].[ID] AS [ID], 
+[vAvgPerMonth].[mnth] AS [mnth]
+FROM [dbo].[vAvgPerMonth] AS [vAvgPerMonth]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vAvgStudentPerMonth" EntityType="Self.vAvgStudentPerMonth" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vAvgStudentPerMonth].[StudentCode] AS [StudentCode], 
+[vAvgStudentPerMonth].[mnth] AS [mnth], 
+[vAvgStudentPerMonth].[AvgNomre] AS [AvgNomre], 
+[vAvgStudentPerMonth].[ID] AS [ID], 
+[vAvgStudentPerMonth].[Title] AS [Title]
+FROM [dbo].[vAvgStudentPerMonth] AS [vAvgStudentPerMonth]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vbarnameHaftegi" EntityType="Self.vbarnameHaftegi" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vbarnameHaftegi].[FullName] AS [FullName], 
@@ -1200,7 +1255,6 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <EntitySet Name="StuRegisters" EntityType="SchoolDBModel.StuRegister" />
           <EntitySet Name="sysdiagrams" EntityType="SchoolDBModel.sysdiagram" />
           <EntitySet Name="Tamarins" EntityType="SchoolDBModel.Tamarin" />
-          <EntitySet Name="vbarnameHaftegis" EntityType="SchoolDBModel.vbarnameHaftegi" />
           <EntitySet Name="vJavabeTamrins" EntityType="SchoolDBModel.vJavabeTamrin" />
           <EntitySet Name="vJTamrins" EntityType="SchoolDBModel.vJTamrin" />
           <EntitySet Name="vLessonGroups" EntityType="SchoolDBModel.vLessonGroup" />
@@ -1289,6 +1343,15 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
             <End Role="Student" EntitySet="Students" />
             <End Role="StuRegister" EntitySet="StuRegisters" />
           </AssociationSet>
+          <EntitySet Name="Fields" EntityType="SchoolDBModel.Field" />
+          <EntitySet Name="vbarnameHaftegis" EntityType="SchoolDBModel.vbarnameHaftegi" />
+          <AssociationSet Name="FK_StuRegister_Fields" Association="SchoolDBModel.FK_StuRegister_Fields">
+            <End Role="Field" EntitySet="Fields" />
+            <End Role="StuRegister" EntitySet="StuRegisters" />
+          </AssociationSet>
+          <EntitySet Name="Months" EntityType="SchoolDBModel.Month" />
+          <EntitySet Name="vAvgPerMonths" EntityType="SchoolDBModel.vAvgPerMonth" />
+          <EntitySet Name="vAvgStudentPerMonths" EntityType="SchoolDBModel.vAvgStudentPerMonth" />
         </EntityContainer>
         <EntityType Name="AnjomanOlya">
           <Key>
@@ -1548,6 +1611,8 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <Property Name="FieldID" Type="Int32" />
           <NavigationProperty Name="Field" Relationship="SchoolDBModel.FK_StuRegister_Fields" FromRole="StuRegister" ToRole="Field" />
           <NavigationProperty Name="Student" Relationship="SchoolDBModel.FK_StuRegister_Students" FromRole="StuRegister" ToRole="Student" />
+          <Property Name="FieldID" Type="Int32" />
+          <NavigationProperty Name="Field" Relationship="SchoolDBModel.FK_StuRegister_Fields" FromRole="StuRegister" ToRole="Field" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1572,20 +1637,6 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
           <Property Name="fileData" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="JavabeTamrins" Relationship="SchoolDBModel.FK_JavabeTamrin_Tamarin" FromRole="Tamarin" ToRole="JavabeTamrin" />
           <NavigationProperty Name="LessonGroup" Relationship="SchoolDBModel.FK_Tamarin_LessonGroups" FromRole="Tamarin" ToRole="LessonGroup" />
-        </EntityType>
-        <EntityType Name="vbarnameHaftegi">
-          <Key>
-            <PropertyRef Name="OzviatID" />
-          </Key>
-          <Property Name="FullName" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
-          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Day" Type="Int32" />
-          <Property Name="Time" Type="Int32" />
-          <Property Name="StudentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="LessonTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OzviatID" Type="Int32" Nullable="false" />
-          <Property Name="LGID" Type="Int32" />
-          <Property Name="Year" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vJavabeTamrin">
           <Key>
@@ -2102,6 +2153,68 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="FieldID" />
+          </Key>
+          <Property Name="FieldID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StuRegisters" Relationship="SchoolDBModel.FK_StuRegister_Fields" FromRole="Field" ToRole="StuRegister" />
+        </EntityType>
+        <EntityType Name="vbarnameHaftegi">
+          <Key>
+            <PropertyRef Name="OzviatID" />
+          </Key>
+          <Property Name="FullName" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Day" Type="Int32" />
+          <Property Name="Time" Type="Int32" />
+          <Property Name="StudentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LessonTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OzviatID" Type="Int32" Nullable="false" />
+          <Property Name="LGID" Type="Int32" />
+          <Property Name="Year" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_StuRegister_Fields">
+          <End Type="SchoolDBModel.Field" Role="Field" Multiplicity="0..1" />
+          <End Type="SchoolDBModel.StuRegister" Role="StuRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="FieldID" />
+            </Principal>
+            <Dependent Role="StuRegister">
+              <PropertyRef Name="FieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Month">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vAvgPerMonth">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mth" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="miangin" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="mnth" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vAvgStudentPerMonth">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="StudentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="mnth" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="AvgNomre" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2369,21 +2482,6 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="TamrinTitle" ColumnName="TamrinTitle" />
                 <ScalarProperty Name="TamrinID" ColumnName="TamrinID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vbarnameHaftegis">
-            <EntityTypeMapping TypeName="SchoolDBModel.vbarnameHaftegi">
-              <MappingFragment StoreEntitySet="vbarnameHaftegi">
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="LGID" ColumnName="LGID" />
-                <ScalarProperty Name="OzviatID" ColumnName="OzviatID" />
-                <ScalarProperty Name="LessonTitle" ColumnName="LessonTitle" />
-                <ScalarProperty Name="StudentCode" ColumnName="StudentCode" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="Class" ColumnName="Class" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2660,6 +2758,60 @@ FROM [dbo].[vTamrin] AS [vTamrin]</DefiningQuery>
                 <ScalarProperty Name="StudentCode" ColumnName="StudentCode" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fields">
+            <EntityTypeMapping TypeName="SchoolDBModel.Field">
+              <MappingFragment StoreEntitySet="Fields">
+                <ScalarProperty Name="FieldTitle" ColumnName="FieldTitle" />
+                <ScalarProperty Name="FieldID" ColumnName="FieldID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vbarnameHaftegis">
+            <EntityTypeMapping TypeName="SchoolDBModel.vbarnameHaftegi">
+              <MappingFragment StoreEntitySet="vbarnameHaftegi">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="LGID" ColumnName="LGID" />
+                <ScalarProperty Name="OzviatID" ColumnName="OzviatID" />
+                <ScalarProperty Name="LessonTitle" ColumnName="LessonTitle" />
+                <ScalarProperty Name="StudentCode" ColumnName="StudentCode" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Months">
+            <EntityTypeMapping TypeName="SchoolDBModel.Month">
+              <MappingFragment StoreEntitySet="Months">
+                <ScalarProperty Name="adad" ColumnName="adad" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAvgPerMonths">
+            <EntityTypeMapping TypeName="SchoolDBModel.vAvgPerMonth">
+              <MappingFragment StoreEntitySet="vAvgPerMonth">
+                <ScalarProperty Name="mnth" ColumnName="mnth" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="miangin" ColumnName="miangin" />
+                <ScalarProperty Name="mth" ColumnName="mth" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAvgStudentPerMonths">
+            <EntityTypeMapping TypeName="SchoolDBModel.vAvgStudentPerMonth">
+              <MappingFragment StoreEntitySet="vAvgStudentPerMonth">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AvgNomre" ColumnName="AvgNomre" />
+                <ScalarProperty Name="mnth" ColumnName="mnth" />
+                <ScalarProperty Name="StudentCode" ColumnName="StudentCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -22,19 +22,6 @@
     <div class="x_content">
         <div class="row">
             <div class="col-md-4 hidden-xs">
-                <label style="padding-top: 5px;">
-                    نمایش
-                               
-                    <select name="ctl00$ContentPlaceHolder1$ddlPageSize" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ddlPageSize\',\'\')', 0)" id="ContentPlaceHolder1_ddlPageSize" style="font-weight: normal;">
-                        <option selected="selected" value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="75">75</option>
-                        <option value="100">100</option>
-                    </select>
-                    رکورد
-               
-                </label>
             </div>
             <div class="col-md-4 col-xs-12 text-righ">
             </div>
@@ -61,7 +48,8 @@
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <asp:GridView ID="gvLessonGroups" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" AutoGenerateColumns="False"
-                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvEmployees_RowDataBound" AllowPaging="True" OnSelectedIndexChanged="gvEmployees_SelectedIndexChanged" OnRowEditing="gvEmployees_RowEditing" OnRowCommand="gvEmployees_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="5">
+                            CssClass="dirRight table" HorizontalAlign="Center" OnRowDataBound="gvEmployees_RowDataBound" AllowPaging="True" OnPageIndexChanging="gvLessonGroups_PageIndexChanging"
+                            OnSelectedIndexChanged="gvEmployees_SelectedIndexChanged" OnRowEditing="gvEmployees_RowEditing" OnRowCommand="gvEmployees_RowCommand" EnableSortingAndPagingCallbacks="True" PageSize="8" PagerStyle-Width="5px" EditRowStyle-HorizontalAlign="NotSet" PagerStyle-HorizontalAlign="Left" PagerStyle-VerticalAlign="Bottom">
                             <Columns>
                                 <asp:BoundField DataField="LGID" HeaderText="<%$ Resources:Dashboard,ID%>" />
                                 <asp:BoundField DataField="Class" HeaderText="<%$ Resources:Dashboard,Class%>" />
@@ -80,7 +68,6 @@
                                             CommandName="Details"
                                             CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
                                             Text="<%$ Resources:sasanRes,details%>" />
-
                                     </ItemTemplate>
 
                                     <ItemStyle HorizontalAlign="Justify" VerticalAlign="Middle"></ItemStyle>
@@ -89,7 +76,7 @@
 
                             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                            <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                            <PagerStyle HorizontalAlign="left" CssClass="GridPager" />
                             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
                             <SortedAscendingCellStyle BackColor="#F7F7F7" />
                             <SortedAscendingHeaderStyle BackColor="#4B4B4B" />

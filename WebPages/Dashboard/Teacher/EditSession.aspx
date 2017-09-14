@@ -77,8 +77,13 @@
 
                 <div class="ln_solid">
                 </div>
-                <div class="pull-left">
-                    <asp:Button ID="btnSabt" CssClass="btn btn-primary" Width="40px" OnClick="btnSabt_Click" OnClientClick="if(!confirm('ایا مطمئن هستید؟')) return false;" runat="server" Text="<%$ Resources:Dashboard,sabt%>" />
+                <div class="row">
+                    <div class="pull-left col-md-1 col-xs-12">
+                        <asp:Button ID="btnSabt" CssClass="btn btn-primary" Width="40px" OnClick="btnSabt_Click" OnClientClick="if(!confirm('ایا مطمئن هستید؟')) return false;" runat="server" Text="<%$ Resources:Dashboard,sabt%>" />
+                    </div>
+                    <div class="pull-left col-md-1 col-xs-12">
+                        <asp:Button ID="btnBack" CssClass="btn btn-default" Width="70px" OnClick="btnBack_Click" runat="server" Text="<%$ Resources:Dashboard,back%>" />
+                    </div>
                 </div>
                 <div id="ContentPlaceHolder1_upGrid">
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -134,7 +139,7 @@
                                                 </div>
                                             </ItemTemplate>
                                             <HeaderTemplate>
-                                                <asp:Literal runat="server" Text="<%$ Resources:HamoonResource,Description%>" />
+                                                <asp:Literal runat="server" Text="<%$ Resources:Dashboard,Description%>" />
                                             </HeaderTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -152,10 +157,14 @@
                         </asp:UpdatePanel>
                     </div>
                 </div>
-                <div class="pull-left">
-                    <asp:Button ID="btnSabt2" CssClass="btn btn-primary" Width="40px" OnClick="btnSabt2_Click" OnClientClick="if(!confirm('ایا مطمئن هستید؟')) return false;" runat="server" Text="<%$ Resources:Dashboard,sabt%>" />
+                <div class="row">
+                    <div class="pull-left col-md-1 col-xs-12">
+                        <asp:Button ID="btnSabt2" CssClass="btn btn-primary" Width="40px" OnClick="btnSabt2_Click" OnClientClick="if(!confirm('ایا مطمئن هستید؟')) return false;" runat="server" Text="<%$ Resources:Dashboard,sabt%>" />
+                    </div>
+                    <div class="pull-left col-md-1 col-xs-12">
+                        <asp:Button ID="Button1" CssClass="btn btn-default" Width="70px" OnClick="btnBack_Click" runat="server" Text="<%$ Resources:Dashboard,back%>" />
+                    </div>
                 </div>
-
                 <div class="extra" style="height: 100px">
                 </div>
             </div>
