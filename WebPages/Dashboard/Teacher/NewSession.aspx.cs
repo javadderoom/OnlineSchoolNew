@@ -21,9 +21,11 @@ namespace WebPages.Dashboard.Teacher
 
             try
             {
-                if (Session["LGIDforSessionHistory"] != null)
+                if (Session["LGIDforNewSession"] != null)
                 {
-                    id = Convert.ToInt32(Session["LGIDforSessionHistory"].ToString());
+                    var today = DateTime.Now;
+
+                    id = Convert.ToInt32(Session["LGIDforNewSession"].ToString());
 
                     SessionRepository Sesrep = new SessionRepository();
                     SessionNumber.Text = Sesrep.CountSessionsByLGID(id);

@@ -747,10 +747,29 @@
     <Content Include="Dashboard\Admin\reportsLessonGroupsChart.aspx" />
     <Content Include="Dashboard\Admin\reportsStudents.aspx" />
     <Content Include="Dashboard\Admin\reportsStudentsChart.aspx" />
+    <Content Include="Dashboard\Admin\WebForm1.aspx" />
     <Content Include="Dashboard\Controllers\GradeChart.ascx" />
     <Content Include="Dashboard\Controllers\HighChartsControl.ascx" />
     <Content Include="Dashboard\Controllers\WebUserControl1.ascx" />
     <Content Include="Dashboard\HighCharts\exporting.js" />
+    <Content Include="Dashboard\JavaScript\jquery-1.6.2.min.js" />
+    <Content Include="Dashboard\JavaScript\jquery.ui.datepicker-cc.all.min.js" />
+    <Content Include="Dashboard\Styles\images\calendar.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_highlight-hard_20_0972a5_1x100.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_highlight-soft_33_003147_1x100.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_highlight-soft_35_222222_1x100.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_highlight-soft_44_444444_1x100.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Dashboard\Styles\images\ui-bg_loop_25_000000_21x21.png" />
+    <Content Include="Dashboard\Styles\images\ui-icons_222222_256x240.png" />
+    <Content Include="Dashboard\Styles\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Dashboard\Styles\images\ui-icons_a83300_256x240.png" />
+    <Content Include="Dashboard\Styles\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="Dashboard\Styles\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Dashboard\Styles\jquery-ui-1.8.14.css" />
     <Content Include="Dashboard\Teacher\ClassStudents.aspx" />
 
     <Content Include="Dashboard\Admin\EditKartabl.aspx" />
@@ -1113,6 +1132,13 @@
     </Compile>
     <Compile Include="Dashboard\Admin\reportsStudentsChart.aspx.designer.cs">
       <DependentUpon>reportsStudentsChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\Admin\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard\Admin\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard\Controllers\GradeChart.ascx.cs">
       <DependentUpon>GradeChart.ascx</DependentUpon>

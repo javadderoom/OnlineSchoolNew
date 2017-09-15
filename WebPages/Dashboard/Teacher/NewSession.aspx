@@ -11,8 +11,26 @@
     <script src="../JavaScript/custom.min.js"></script>
     <link href="../Styles/AdminPanelStyles.css" rel="stylesheet" />
     <link href="../font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../Styles/jquery-ui-1.8.14.css" rel="stylesheet" />
+    <script src="../JavaScript/jquery-1.6.2.min.js"></script>
+    <script src="../JavaScript/jquery.ui.datepicker-cc.all.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script>
+        $(function () {
+
+            //-----------------------------------
+            // استفاده از dropdown
+            $('#ContentPlaceHolder1_tbxSessionDate').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd - mm - yy'
+            });
+            //-----------------------------------
+
+
+        });
+    </script>
     <div class="c-title">
         <h4>
 
@@ -161,4 +179,5 @@
             </div>
         </div>
     </div>
+
 </asp:Content>
